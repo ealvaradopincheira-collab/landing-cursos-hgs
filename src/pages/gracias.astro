@@ -1,0 +1,14 @@
+---
+// Destino de los formularios de información y convenio cuando se envían sin JavaScript.
+import Base from '../layouts/Base.astro';
+---
+<Base titulo="Mensaje recibido">
+  <meta slot="head" name="robots" content="noindex" />
+  <div class="contenedor" style="max-width: 640px; padding-block: var(--space-24);">
+    <h1 style="font-size: var(--fs-h1);">Recibimos tu mensaje</h1>
+    <p style="margin-top: var(--space-4); color: var(--text-secondary);">
+      Te responderemos dentro de un día hábil al correo que indicaste.
+    </p>
+    <p style="margin-top: var(--space-8);"><a class="boton boton--secundario" href="/">Volver al inicio</a></p>
+  </div>
+</Base>

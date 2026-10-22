@@ -1,0 +1,112 @@
+---
+// Fila del explorador de cursos: texto + figura técnica, alternando el lado en escritorio.
+import type { CollectionEntry } from 'astro:content';
+import { cohorteAbierta } from '../lib/cohortes';
+import { formatoCLP, formatoFechaCorta } from '../lib/formato';
+import Diagrama from './Diagrama.astro';
+
+interface Props {
+  curso: CollectionEntry<'cursos'>;
+  docentes: CollectionEntry<'docentes'>[];
+  invertir?: boolean;
+}
+const { curso, docentes, invertir = false } = Astro.props;
+const d = curso.data;
+const cohorte = cohorteAbierta(d.cohortes);
+const AREA = { hidrogeologia: 'Hidrogeología', geociencias: 'Geociencias' } as const;
+---
+<article class:list={['fila', { 'fila--invertida': invertir }]} aria-labelledby={`curso-${curso.id}`}>
+  <div class="fila__texto">
+    <p class="chip">{AREA[d.area]}</p>
+    <h3 id={`curso-${curso.id}`}><a href={`/cursos/${curso.id}/`}>{d.titulo}</a></h3>
+    <p class="fila__resumen">{d.resumen}</p>
+    <p class="fila__docentes">{docentes.map((p) => p.data.nombre).join(' · ')}</p>
+    <ul class="fila__datos" aria-label="Datos del curso">
+      {cohorte
+        ? <li class="chip chip--acento">Inicia {formatoFechaCorta(cohorte.inicio)}</li>
+        : <li class="chip">Próximamente</li>}
+      <li class="chip">Google Meet</li>
+      <li class="chip">{formatoCLP(d.precioCLP)} CLP</li>
+    </ul>
+    <div class="fila__acciones">
+      <a class="boton boton--secundario" href={`/cursos/${curso.id}/`}>Ver temario y docentes<span class="solo-lectores"> de {d.titulo}</span></a>
+      {cohorte && <a class="boton boton--primario" href={`/inscripcion/${curso.id}/`}>Inscribirme<span class="solo-lectores"> en {d.titulo}</span></a>}
+    </div>
+  </div>
+  {d.diagrama && (
+    <div class="fila__figura">
+      <Diagrama tipo={d.diagrama} id={`home-fig-${curso.id}`} />
+    </div>
+  )}
+</article>
+
+<style>
+  .fila {
+    display: grid;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  /* Los hijos de grid no deben crecer con su contenido (tablas de datos desplazables) */
+  .fila > * {
+    min-width: 0;
+  }
+
+  @media (min-width: 960px) {
+    .fila {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: var(--space-16);
+    }
+
+    .fila--invertida {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    }
+
+    .fila--invertida .fila__texto {
+      order: 2;
+    }
+  }
+
+  h3 {
+    margin-top: var(--space-4);
+    font-size: clamp(28px, 3.2vw, 40px);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+  }
+
+  h3 a {
+    text-decoration: none;
+  }
+
+  h3 a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+
+  .fila__resumen {
+    max-width: 44ch;
+    margin-top: var(--space-4);
+    color: var(--text-secondary);
+  }
+
+  .fila__docentes {
+    margin-top: var(--space-4);
+    font-weight: 600;
+  }
+
+  .fila__datos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-6);
+    padding: 0;
+    list-style: none;
+  }
+
+  .fila__acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-8);
+  }
+</style>

@@ -1,0 +1,40 @@
+---
+import GraficoLinea from './GraficoLinea.astro';
+import { wTheis, wCooperJacob, espacioLog } from '../lib/hidro';
+
+interface Props { id?: string }
+const { id = 'fig-theis' } = Astro.props;
+
+const num = (v: number, cifras = 3) => v.toLocaleString('es-CL', { maximumSignificantDigits: cifras });
+const potencia = (v: number) => {
+  const e = Math.round(Math.log10(v));
+  return e <= 1 ? String(v) : `10${'⁰¹²³⁴⁵⁶⁷⁸⁹'[e]}`;
+};
+
+const xs = espacioLog(0.5, 1e4, 120);
+const theis = xs.map((x) => [x, wTheis(1 / x)] as [number, number]);
+const cooper = xs.map((x) => [x, wCooperJacob(1 / x)] as [number, number]);
+
+const filas = [1, 10, 100, 1000, 10000].map((x) => {
+  const u = 1 / x;
+  const w = wTheis(u);
+  const cj = wCooperJacob(u);
+  return [num(x), num(u), num(w, 4), cj > 0 ? num(cj, 4) : '—', cj > 0 ? `${num(((cj - w) / w) * 100, 2)} %` : '—'];
+});
+---
+<GraficoLinea
+  id={id}
+  titulo="Curva tipo de Theis y aproximación de Cooper-Jacob"
+  descripcion="Gráfico log-log de la función de pozo W(u) en función de 1/u. La aproximación de Cooper-Jacob coincide con Theis cuando u es menor que 0,01 y se separa a tiempos cortos."
+  series={[
+    { clave: 'theis', nombre: 'Theis, W(u)', color: 'dato-1', puntos: theis, etiqueta: { x: 1, texto: 'Theis', dy: -6, ancla: 'end' } },
+    { clave: 'cj', nombre: 'Cooper-Jacob', color: 'dato-2', puntos: cooper, etiqueta: { x: 3.2, texto: 'Cooper-Jacob', dy: 26 } },
+  ]}
+  ejeX={{ tipo: 'log', dominio: [0.5, 1e4], ticks: [1, 10, 100, 1000, 10000], formato: potencia, titulo: '1/u (tiempo adimensional)' }}
+  ejeY={{ tipo: 'log', dominio: [0.01, 10], ticks: [0.01, 0.1, 1, 10], formato: (v) => num(v), titulo: 'W(u)' }}
+  formatoValorX={(x) => `1/u = ${num(x)}`}
+  formatoValorY={(y) => num(y)}
+  referencias={[{ eje: 'x', valor: 100, texto: 'u = 0,01' }]}
+  tabla={{ cabeceras: ['1/u', 'u', 'W(u) Theis', 'Cooper-Jacob', 'Diferencia'], filas }}
+  nota="Calculada con W(u) = E₁(u) y contrastada con Abramowitz y Stegun (1964), tabla 5.1."
+/>

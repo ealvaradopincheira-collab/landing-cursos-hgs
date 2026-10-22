@@ -1,0 +1,76 @@
+---
+import Base from './Base.astro';
+import { SITIO } from '../config/sitio';
+
+interface Props {
+  titulo: string;
+  actualizado: string;
+}
+const { titulo, actualizado } = Astro.props;
+---
+<Base titulo={titulo}>
+  <article class="contenedor legal">
+    {!SITIO.legalesValidados && (
+      <p class="legal__borrador" role="note">
+        Borrador para revisión de HGS. Las secciones marcadas «A definir» requieren decisión antes de publicar.
+      </p>
+    )}
+    <h1>{titulo}</h1>
+    <p class="legal__fecha">Última actualización: {actualizado}</p>
+    <slot />
+  </article>
+</Base>
+
+<style>
+  .legal {
+    max-width: 720px;
+    padding-block: var(--space-16);
+  }
+
+  .legal__borrador {
+    margin-bottom: var(--space-8);
+    padding: var(--space-4) var(--space-6);
+    border: 1px dashed var(--brand-accent);
+    border-radius: var(--radius-md);
+    color: var(--brand-accent);
+    font-weight: 500;
+  }
+
+  h1 {
+    font-size: var(--fs-h1);
+  }
+
+  .legal__fecha {
+    margin-top: var(--space-2);
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+
+  .legal :global(h2) {
+    margin-top: var(--space-12);
+    font-size: var(--fs-h3);
+  }
+
+  .legal :global(p),
+  .legal :global(li) {
+    color: var(--text-secondary);
+  }
+
+  .legal :global(p) {
+    margin-top: var(--space-3);
+  }
+
+  .legal :global(ul) {
+    margin-top: var(--space-3);
+    padding-left: var(--space-6);
+  }
+
+  .legal :global(.a-definir) {
+    display: block;
+    margin-top: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border-left: 2px solid var(--brand-accent);
+    background: var(--bg-surface);
+    color: var(--text-primary);
+  }
+</style>

@@ -1,0 +1,189 @@
+---
+import { getCollection, getEntries } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import HeroHome from '../components/HeroHome.astro';
+import HeroParticulas from '../components/HeroParticulas.astro';
+import TarjetaCurso from '../components/TarjetaCurso.astro';
+import Docentes from '../components/Docentes.astro';
+import BloqueConvenio from '../components/BloqueConvenio.astro';
+import { SITIO } from '../config/sitio';
+
+const cursos = (await getCollection('cursos')).sort((a, b) => a.data.orden - b.data.orden);
+const conDocentes = await Promise.all(cursos.map(async (c) => ({ curso: c, docentes: await getEntries(c.data.docentes) })));
+const todosDocentes = [...new Map(conDocentes.flatMap((c) => c.docentes).map((p) => [p.id, p])).values()];
+
+const perfiles = [
+  { titulo: 'Geología', texto: 'Geólogos y geólogas que necesitan interpretar datos hidráulicos o evaluar la estabilidad de laderas.' },
+  { titulo: 'Ingeniería', texto: 'Ingeniería de minas, civil y ambiental: quienes diseñan, revisan o encargan estudios de agua y terreno.' },
+  { titulo: 'Consultoría', texto: 'Profesionales que preparan informes técnicos y antecedentes para evaluaciones ambientales.' },
+  { titulo: 'Sector público', texto: 'Quienes revisan estudios de terceros y necesitan criterio para evaluar sus supuestos.' },
+];
+
+const preguntas = [
+  { p: '¿Cómo son las clases?', r: 'En vivo por Google Meet, en el horario publicado en la ficha de cada curso. Cada módulo termina con un entregable práctico.' },
+  { p: '¿Cómo se paga?', r: 'Registras tus datos en el sitio y pagas con Mercado Pago, en pesos chilenos, con el mismo correo que ingresaste.' },
+  { p: '¿Cuándo recibo el enlace de la clase?', r: 'Dentro de un día hábil desde la confirmación del pago, en el correo con que te inscribiste.' },
+  { p: '¿Puedo inscribir a mi equipo?', r: `Sí. Desde ${SITIO.convenioMinimoAlumnos} participantes de una misma empresa o institución se acuerda un convenio con condiciones de grupo y un solo pago.` },
+];
+---
+<Base>
+  <HeroHome>
+    <HeroParticulas slot="fondo" />
+  </HeroHome>
+
+  <section id="cursos" class="contenedor seccion" aria-labelledby="h-cursos">
+    <header class="seccion__cabecera">
+      <h2 id="h-cursos">Cursos</h2>
+      <p>Cada curso combina teoría, casos y un entregable por módulo. Las figuras muestran las relaciones que se trabajan en clase.</p>
+    </header>
+    <div class="explorador">
+      {conDocentes.map(({ curso, docentes }, i) => <TarjetaCurso curso={curso} docentes={docentes} invertir={i % 2 === 1} />)}
+    </div>
+  </section>
+
+  <section class="contenedor seccion" aria-labelledby="h-perfiles">
+    <header class="seccion__cabecera">
+      <h2 id="h-perfiles">Para quién</h2>
+    </header>
+    <ul class="perfiles">
+      {perfiles.map((p) => (
+        <li>
+          <h3>{p.titulo}</h3>
+          <p>{p.texto}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="contenedor seccion" aria-labelledby="h-docentes">
+    <header class="seccion__cabecera">
+      <h2 id="h-docentes">Docentes</h2>
+    </header>
+    <Docentes docentes={todosDocentes} />
+  </section>
+
+  <section class="contenedor seccion" aria-labelledby="h-convenio">
+    <h2 id="h-convenio" class="solo-lectores">Convenios</h2>
+    <BloqueConvenio />
+  </section>
+
+  <section class="contenedor seccion preguntas" aria-labelledby="h-preguntas">
+    <header class="seccion__cabecera">
+      <h2 id="h-preguntas">Preguntas frecuentes</h2>
+    </header>
+    <div>
+      {preguntas.map((q) => (
+        <details>
+          <summary>{q.p}</summary>
+          <p>{q.r}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <section class="contenedor cierre" aria-labelledby="h-cierre">
+    <h2 id="h-cierre">Elige tu curso y reserva tu cupo</h2>
+    <a class="boton boton--primario" href="#cursos">Ver cursos</a>
+  </section>
+</Base>
+
+<style>
+  .seccion {
+    padding-top: var(--space-32);
+  }
+
+  .seccion__cabecera {
+    display: grid;
+    gap: var(--space-4);
+    margin-bottom: var(--space-12);
+  }
+
+  @media (min-width: 960px) {
+    .seccion__cabecera {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      align-items: end;
+      gap: var(--space-16);
+    }
+  }
+
+  .seccion__cabecera h2 {
+    font-size: clamp(32px, 4.4vw, 56px);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+
+  .seccion__cabecera p {
+    max-width: 52ch;
+    color: var(--text-secondary);
+  }
+
+  .explorador {
+    display: grid;
+    gap: var(--space-24);
+  }
+
+  .perfiles {
+    display: grid;
+    gap: var(--space-8) var(--space-12);
+    padding: 0;
+    list-style: none;
+  }
+
+  @media (min-width: 768px) {
+    .perfiles {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1100px) {
+    .perfiles {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .perfiles li {
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--border-strong);
+  }
+
+  .perfiles p {
+    margin-top: var(--space-3);
+    color: var(--text-secondary);
+  }
+
+  .preguntas details {
+    padding-block: var(--space-6);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .preguntas details:first-child {
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .preguntas summary {
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .preguntas details p {
+    max-width: 64ch;
+    margin-top: var(--space-3);
+    color: var(--text-secondary);
+  }
+
+  .cierre {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-8);
+    padding-top: var(--space-32);
+  }
+
+  .cierre h2 {
+    max-width: 16ch;
+    font-size: var(--fs-statement);
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+  }
+</style>

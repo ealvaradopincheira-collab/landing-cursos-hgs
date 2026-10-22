@@ -1,0 +1,41 @@
+---
+import Legal from '../layouts/Legal.astro';
+import { SITIO } from '../config/sitio';
+import { mostrar } from '../lib/formato';
+---
+<Legal titulo="Política de privacidad" actualizado="22 de octubre de 2026">
+  <h2>1. Datos que se recogen</h2>
+  <ul>
+    <li><strong>Inscripción:</strong> nombre, correo electrónico, país, profesión y, de forma opcional, empresa o institución.</li>
+    <li><strong>Consultas:</strong> nombre, correo electrónico y el texto de la consulta.</li>
+    <li><strong>Convenios:</strong> empresa o institución, nombre y correo de contacto, teléfono opcional y número de participantes.</li>
+  </ul>
+  <p>El sitio no utiliza cookies de seguimiento ni herramientas de analítica de terceros.</p>
+
+  <h2>2. Finalidad</h2>
+  <p>
+    Los datos se usan exclusivamente para gestionar la inscripción, asociar el pago al participante, enviar la
+    confirmación y el enlace de Google Meet, responder consultas y acordar convenios. No se venden ni se ceden a
+    terceros con fines comerciales.
+  </p>
+
+  <h2>3. Servicios que intervienen</h2>
+  <ul>
+    <li><strong>Netlify:</strong> alojamiento del sitio y recepción de los formularios.</li>
+    <li><strong>Mercado Pago:</strong> procesamiento del pago, bajo sus propias condiciones de privacidad.</li>
+    <li><strong>Google Meet:</strong> dictado de las clases en vivo.</li>
+  </ul>
+
+  <h2>4. Conservación</h2>
+  <p class="a-definir">A definir: plazo de conservación de los datos de inscripción y consultas.</p>
+
+  <h2>5. Derechos del titular</h2>
+  <p>
+    El titular puede solicitar acceso, rectificación, cancelación u oposición al tratamiento de sus datos
+    escribiendo a <span class="mono">{mostrar(SITIO.correo)}</span>.
+  </p>
+  <p class="a-definir">
+    A revisar con asesoría legal: adecuación a la normativa chilena de protección de datos personales vigente a la
+    fecha de publicación.
+  </p>
+</Legal>

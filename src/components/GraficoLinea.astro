@@ -1,0 +1,437 @@
+---
+// Gráfico de líneas estático (SVG generado en el build) con capa de hover/teclado y tabla de datos.
+// Especificación: skill dataviz — líneas de 2 px, grilla y ejes en hairline sólida, leyenda para ≥ 2 series,
+// etiquetas directas selectivas, crosshair con tooltip (mouse y teclado) y tabla equivalente.
+
+type Escala = 'lin' | 'log';
+interface Eje {
+  tipo: Escala;
+  dominio: [number, number];
+  ticks: number[];
+  formato: (v: number) => string;
+  titulo: string;
+  /** No rotula el tick del mínimo (evita el choque con la etiqueta del eje X en la esquina). */
+  omitirMinimo?: boolean;
+}
+interface Serie {
+  clave: string;
+  nombre: string;
+  color: 'dato-1' | 'dato-2';
+  puntos: [number, number][];
+  etiqueta?: { x: number; texto: string; dy?: number; ancla?: 'start' | 'end' };
+}
+interface Props {
+  id: string;
+  titulo: string;
+  descripcion: string;
+  series: Serie[];
+  ejeX: Eje;
+  ejeY: Eje;
+  formatoValorX: (v: number) => string;
+  formatoValorY: (v: number) => string;
+  referencias?: { eje: 'x' | 'y'; valor: number; texto: string }[];
+  marcadores?: { x: number; y: number; texto: string; ancla?: 'start' | 'end' }[];
+  tabla: { cabeceras: string[]; filas: string[][] };
+  nota?: string;
+}
+
+const { id, titulo, descripcion, series, ejeX, ejeY, formatoValorX, formatoValorY, referencias = [], marcadores = [], tabla, nota } = Astro.props;
+
+const W = 520, H = 340;
+const M = { izq: 56, der: 20, arr: 16, aba: 52 };
+const ancho = W - M.izq - M.der;
+const alto = H - M.arr - M.aba;
+
+const t = (eje: Eje, v: number) => (eje.tipo === 'log' ? Math.log10(v) : v);
+const escala = (eje: Eje, rango: [number, number]) => {
+  const [d0, d1] = eje.dominio.map((v) => t(eje, v));
+  return (v: number) => rango[0] + ((t(eje, v) - d0) / (d1 - d0)) * (rango[1] - rango[0]);
+};
+const sx = escala(ejeX, [M.izq, M.izq + ancho]);
+const sy = escala(ejeY, [M.arr + alto, M.arr]);
+const dentroY = (y: number) => y >= ejeY.dominio[0] && y <= ejeY.dominio[1];
+const r = (n: number) => Math.round(n * 10) / 10;
+
+const trazo = (puntos: [number, number][]) =>
+  puntos.filter(([, y]) => dentroY(y)).map(([x, y], i) => `${i ? 'L' : 'M'}${r(sx(x))} ${r(sy(y))}`).join(' ');
+
+// Datos para la capa interactiva: la serie más larga define las posiciones X de anclaje
+const base = series.reduce((a, b) => (b.puntos.length > a.puntos.length ? b : a));
+const interactivo = {
+  x: base.puntos.map(([x]) => r(sx(x))),
+  etiquetasX: base.puntos.map(([x]) => formatoValorX(x)),
+  series: series.map((s) => {
+    const mapa = new Map(s.puntos.map(([x, y]) => [x, y]));
+    return {
+      nombre: s.nombre,
+      color: s.color,
+      y: base.puntos.map(([x]) => { const y = mapa.get(x); return y !== undefined && dentroY(y) ? r(sy(y)) : null; }),
+      valores: base.puntos.map(([x]) => { const y = mapa.get(x); return y !== undefined && dentroY(y) ? formatoValorY(y) : null; }),
+    };
+  }),
+};
+const multiples = series.length > 1;
+---
+<figure class="grafico" aria-labelledby={`${id}-titulo`} data-grafico={JSON.stringify(interactivo)}>
+  <figcaption>
+    <p class="grafico__titulo" id={`${id}-titulo`}>{titulo}</p>
+    {multiples && (
+      <ul class="grafico__leyenda" aria-label="Leyenda">
+        {series.map((s) => <li><span class="clave" style={`background: var(--${s.color})`} aria-hidden="true"></span>{s.nombre}</li>)}
+      </ul>
+    )}
+  </figcaption>
+
+  <div class="grafico__lienzo">
+    <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-labelledby={`${id}-titulo ${id}-desc`} tabindex="0" data-svg>
+      <desc id={`${id}-desc`}>{descripcion} Use las flechas izquierda y derecha para recorrer los valores.</desc>
+
+      <g class="grilla" aria-hidden="true">
+        {ejeY.ticks.map((v) => <line x1={M.izq} x2={M.izq + ancho} y1={r(sy(v))} y2={r(sy(v))} />)}
+        {ejeX.ticks.map((v) => <line x1={r(sx(v))} x2={r(sx(v))} y1={M.arr} y2={M.arr + alto} />)}
+      </g>
+      <g class="eje" aria-hidden="true">
+        <line x1={M.izq} x2={M.izq + ancho} y1={M.arr + alto} y2={M.arr + alto} />
+        <line x1={M.izq} x2={M.izq} y1={M.arr} y2={M.arr + alto} />
+      </g>
+      <g class="ticks" aria-hidden="true">
+        {ejeX.ticks.map((v) => <text x={r(sx(v))} y={M.arr + alto + 20} text-anchor="middle">{ejeX.formato(v)}</text>)}
+        {ejeY.ticks.filter((v) => !(ejeY.omitirMinimo && v === ejeY.dominio[0])).map((v) => <text x={M.izq - 8} y={r(sy(v)) + 5} text-anchor="end">{ejeY.formato(v)}</text>)}
+        <text class="titulo-eje" x={M.izq + ancho / 2} y={H - 6} text-anchor="middle">{ejeX.titulo}</text>
+        <text class="titulo-eje" x={14} y={M.arr + alto / 2} text-anchor="middle" transform={`rotate(-90 14 ${M.arr + alto / 2})`}>{ejeY.titulo}</text>
+      </g>
+
+      {referencias.map((ref) => ref.eje === 'y' ? (
+        <g class="referencia" aria-hidden="true">
+          <line x1={M.izq} x2={M.izq + ancho} y1={r(sy(ref.valor))} y2={r(sy(ref.valor))} />
+          <text x={M.izq + ancho - 4} y={r(sy(ref.valor)) - 8} text-anchor="end">{ref.texto}</text>
+        </g>
+      ) : (
+        <g class="referencia" aria-hidden="true">
+          <line x1={r(sx(ref.valor))} x2={r(sx(ref.valor))} y1={M.arr} y2={M.arr + alto} />
+          <text x={r(sx(ref.valor)) + 6} y={M.arr + 16}>{ref.texto}</text>
+        </g>
+      ))}
+
+      {series.map((s) => <path class="serie" d={trazo(s.puntos)} style={`stroke: var(--${s.color})`} />)}
+
+      {series.filter((s) => s.etiqueta).map((s) => {
+        const e = s.etiqueta!;
+        const punto = s.puntos.reduce((a, b) => (Math.abs(b[0] - e.x) < Math.abs(a[0] - e.x) ? b : a));
+        return <text class="etiqueta" x={r(sx(punto[0])) + (e.ancla === 'end' ? -8 : 0)} y={r(sy(punto[1])) + (e.dy ?? -12)} text-anchor={e.ancla ?? 'start'} aria-hidden="true">{e.texto}</text>;
+      })}
+
+      {marcadores.map((m) => (
+        <g aria-hidden="true">
+          <circle class="marcador" cx={r(sx(m.x))} cy={r(sy(m.y))} r="4" />
+          <text class="etiqueta" x={r(sx(m.x)) + (m.ancla === 'end' ? -10 : 10)} y={r(sy(m.y)) + 22} text-anchor={m.ancla ?? 'start'}>{m.texto}</text>
+        </g>
+      ))}
+
+      <g class="hover" aria-hidden="true" data-hover visibility="hidden">
+        <line y1={M.arr} y2={M.arr + alto} data-cruz />
+        {series.map((s) => <circle r="4" style={`fill: var(--${s.color})`} data-punto />)}
+      </g>
+      <rect class="captura" x={M.izq} y={M.arr} width={ancho} height={alto} data-captura />
+    </svg>
+    <div class="grafico__tooltip" aria-hidden="true" data-tooltip hidden></div>
+  </div>
+
+  <p class="solo-lectores" aria-live="polite" data-anuncio></p>
+  {nota && <p class="grafico__nota">{nota}</p>}
+
+  <details class="grafico__tabla">
+    <summary>Ver datos de la figura</summary>
+    <div class="grafico__desborde" tabindex="0" role="region" aria-label="Datos de la figura, desplazable">
+    <table>
+      <thead><tr>{tabla.cabeceras.map((c) => <th scope="col">{c}</th>)}</tr></thead>
+      <tbody>{tabla.filas.map((f) => <tr>{f.map((c) => <td>{c}</td>)}</tr>)}</tbody>
+    </table>
+    </div>
+  </details>
+</figure>
+
+<style>
+  .grafico {
+    display: grid;
+    gap: var(--space-4);
+    min-width: 0;
+    margin: 0;
+  }
+
+  .grafico > * {
+    min-width: 0;
+  }
+
+  .grafico__titulo {
+    font-weight: 600;
+  }
+
+  .grafico__leyenda {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-6);
+    margin-top: var(--space-2);
+    padding: 0;
+    list-style: none;
+    color: var(--text-secondary);
+    font-size: 14px;
+  }
+
+  .grafico__leyenda li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .clave {
+    width: 16px;
+    height: 2px;
+    border-radius: 1px;
+  }
+
+  .grafico__lienzo {
+    position: relative;
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    border-radius: var(--radius-sm);
+  }
+
+  .grilla line {
+    stroke: var(--grilla);
+    stroke-width: 1;
+  }
+
+  .eje line {
+    stroke: var(--eje);
+    stroke-width: 1;
+  }
+
+  .ticks text {
+    fill: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .ticks .titulo-eje {
+    fill: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 15px;
+  }
+
+  .serie {
+    fill: none;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+
+  .referencia line {
+    stroke: var(--eje);
+    stroke-width: 1;
+  }
+
+  .referencia text,
+  .etiqueta {
+    fill: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .marcador,
+  .hover circle {
+    stroke: var(--bg-surface);
+    stroke-width: 2;
+  }
+
+  .marcador {
+    fill: var(--text-primary);
+  }
+
+  .hover line {
+    stroke: var(--text-muted);
+    stroke-width: 1;
+  }
+
+  .captura {
+    fill: transparent;
+    cursor: crosshair;
+  }
+
+  svg:focus-visible {
+    outline: 2px solid var(--border-focus);
+    outline-offset: 4px;
+  }
+
+  .grafico__tooltip {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    min-width: 140px;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    background: var(--bg-canvas);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    font-size: 13px;
+    pointer-events: none;
+    transform: translateX(-50%);
+  }
+
+  .grafico__tooltip :global(.tt-x) {
+    color: var(--text-muted);
+  }
+
+  .grafico__tooltip :global(.tt-fila) {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .grafico__tooltip :global(.tt-valor) {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .grafico__tooltip :global(.tt-nombre) {
+    color: var(--text-secondary);
+  }
+
+  .grafico__nota {
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+
+  .grafico__tabla summary {
+    color: var(--text-secondary);
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .grafico__desborde {
+    margin-top: var(--space-3);
+    overflow-x: auto;
+  }
+
+  .grafico__tabla table {
+    width: 100%;
+    min-width: max-content;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .grafico__tabla th,
+  .grafico__tabla td {
+    padding: var(--space-2) var(--space-3);
+    border-bottom: 1px solid var(--border-subtle);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .grafico__tabla th {
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+</style>
+
+<script>
+  interface Datos {
+    x: number[];
+    etiquetasX: string[];
+    series: { nombre: string; color: string; y: (number | null)[]; valores: (string | null)[] }[];
+  }
+
+  for (const figura of document.querySelectorAll<HTMLElement>('[data-grafico]')) {
+    const datos: Datos = JSON.parse(figura.dataset.grafico!);
+    const svg = figura.querySelector<SVGSVGElement>('[data-svg]')!;
+    const hover = figura.querySelector<SVGGElement>('[data-hover]')!;
+    const cruz = figura.querySelector<SVGLineElement>('[data-cruz]')!;
+    const puntos = [...figura.querySelectorAll<SVGCircleElement>('[data-punto]')];
+    const tooltip = figura.querySelector<HTMLElement>('[data-tooltip]')!;
+    const anuncio = figura.querySelector<HTMLElement>('[data-anuncio]')!;
+    const ancho = svg.viewBox.baseVal.width;
+    let indice = -1;
+
+    const mostrar = (i: number, anunciar: boolean) => {
+      indice = Math.max(0, Math.min(datos.x.length - 1, i));
+      const x = datos.x[indice];
+      cruz.setAttribute('x1', String(x));
+      cruz.setAttribute('x2', String(x));
+      datos.series.forEach((s, k) => {
+        const y = s.y[indice];
+        puntos[k].style.display = y === null ? 'none' : '';
+        if (y !== null) {
+          puntos[k].setAttribute('cx', String(x));
+          puntos[k].setAttribute('cy', String(y));
+        }
+      });
+      hover.setAttribute('visibility', 'visible');
+
+      // Contenido con textContent: los nombres de series son datos, no HTML
+      tooltip.replaceChildren();
+      const cabecera = document.createElement('div');
+      cabecera.className = 'tt-x';
+      cabecera.textContent = datos.etiquetasX[indice];
+      tooltip.append(cabecera);
+      const partes = [datos.etiquetasX[indice]];
+      for (const s of datos.series) {
+        const valor = s.valores[indice];
+        if (valor === null) continue;
+        const fila = document.createElement('div');
+        fila.className = 'tt-fila';
+        const clave = document.createElement('span');
+        clave.style.cssText = `width:12px;height:2px;border-radius:1px;background:var(--${s.color})`;
+        const v = document.createElement('span');
+        v.className = 'tt-valor';
+        v.textContent = valor;
+        const n = document.createElement('span');
+        n.className = 'tt-nombre';
+        n.textContent = s.nombre;
+        fila.append(clave, v, n);
+        tooltip.append(fila);
+        partes.push(`${s.nombre}: ${valor}`);
+      }
+      const porcentaje = (x / ancho) * 100;
+      tooltip.style.left = `${Math.min(80, Math.max(20, porcentaje))}%`;
+      tooltip.hidden = false;
+      if (anunciar) anuncio.textContent = partes.join('. ');
+    };
+
+    const ocultar = () => {
+      hover.setAttribute('visibility', 'hidden');
+      tooltip.hidden = true;
+    };
+
+    const indiceCercano = (clientX: number) => {
+      const rect = svg.getBoundingClientRect();
+      const x = ((clientX - rect.left) / rect.width) * ancho;
+      let mejor = 0;
+      for (let i = 1; i < datos.x.length; i++) {
+        if (Math.abs(datos.x[i] - x) < Math.abs(datos.x[mejor] - x)) mejor = i;
+      }
+      return mejor;
+    };
+
+    svg.addEventListener('pointermove', (e) => mostrar(indiceCercano(e.clientX), false));
+    svg.addEventListener('pointerleave', ocultar);
+    svg.addEventListener('focus', () => mostrar(indice < 0 ? Math.floor(datos.x.length / 2) : indice, true));
+    svg.addEventListener('blur', ocultar);
+    svg.addEventListener('keydown', (e) => {
+      const paso = e.shiftKey ? 5 : 1;
+      if (e.key === 'ArrowRight') mostrar(indice + paso, true);
+      else if (e.key === 'ArrowLeft') mostrar(indice - paso, true);
+      else if (e.key === 'Home') mostrar(0, true);
+      else if (e.key === 'End') mostrar(datos.x.length - 1, true);
+      else if (e.key === 'Escape') ocultar();
+      else return;
+      e.preventDefault();
+    });
+  }
+</script>

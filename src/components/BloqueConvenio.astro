@@ -1,0 +1,62 @@
+---
+import { SITIO } from '../config/sitio';
+
+interface Props {
+  slug?: string;
+}
+const { slug } = Astro.props;
+const href = slug ? `/convenios/?curso=${slug}` : '/convenios/';
+---
+<div class="convenio">
+  <div>
+    <p class="convenio__cifra mono">{SITIO.convenioMinimoAlumnos}+</p>
+    <p class="convenio__unidad">alumnos</p>
+  </div>
+  <div class="convenio__texto">
+    <h3>Convenio para empresas e instituciones</h3>
+    <p>
+      Para grupos de {SITIO.convenioMinimoAlumnos} o más participantes de una misma empresa o institución
+      se acuerdan las condiciones de inscripción y se gestiona el pago en una sola operación.
+    </p>
+    <a class="boton boton--secundario" href={href}>Solicitar convenio</a>
+  </div>
+</div>
+
+<style>
+  .convenio {
+    display: grid;
+    gap: var(--space-6);
+    padding: var(--space-8);
+    border-radius: var(--radius-xl);
+    background: var(--bg-surface);
+  }
+
+  @media (min-width: 768px) {
+    .convenio {
+      grid-template-columns: 160px 1fr;
+      align-items: start;
+      gap: var(--space-8);
+      padding: var(--space-12);
+    }
+  }
+
+  .convenio__cifra {
+    font-size: 64px;
+    line-height: 1;
+    color: var(--brand-primary);
+  }
+
+  .convenio__unidad {
+    color: var(--text-muted);
+  }
+
+  .convenio__texto p {
+    max-width: 56ch;
+    margin-block: var(--space-3) var(--space-6);
+    color: var(--text-secondary);
+  }
+
+  .convenio .boton--secundario {
+    background: var(--bg-canvas);
+  }
+</style>

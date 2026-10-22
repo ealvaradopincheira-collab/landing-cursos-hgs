@@ -1,0 +1,109 @@
+---
+import { getCollection } from 'astro:content';
+import { SITIO } from '../config/sitio';
+import { mostrar } from '../lib/formato';
+
+const cursos = (await getCollection('cursos')).sort((a, b) => a.data.orden - b.data.orden);
+const anio = new Date().getFullYear();
+const correo = mostrar(SITIO.correo);
+const correoReal = SITIO.correo !== 'PENDIENTE';
+---
+<footer class="pie" id="contacto">
+  <div class="contenedor pie__grilla">
+    <div class="pie__marca">
+      <picture>
+        <source srcset="/brand/hgs-logo-oscuro.svg" media="(prefers-color-scheme: dark)" />
+        <img src="/brand/hgs-logo.svg" alt="HGS — Hidrogeología y geociencias" width="196" height="45" loading="lazy" />
+      </picture>
+      <p>Cursos en vivo de hidrogeología y geociencias aplicadas, por Google Meet.</p>
+    </div>
+
+    <nav aria-labelledby="pie-cursos">
+      <h2 id="pie-cursos" class="pie__titulo">Cursos</h2>
+      <ul>
+        {cursos.map((c) => <li><a href={`/cursos/${c.id}/`}>{c.data.titulo}</a></li>)}
+      </ul>
+    </nav>
+
+    <nav aria-labelledby="pie-hgs">
+      <h2 id="pie-hgs" class="pie__titulo">HGS</h2>
+      <ul>
+        <li><a href="/convenios/">Convenios desde {SITIO.convenioMinimoAlumnos} alumnos</a></li>
+        <li><a href="/terminos/">Términos de inscripción</a></li>
+        <li><a href="/privacidad/">Privacidad</a></li>
+      </ul>
+    </nav>
+
+    <div>
+      <h2 class="pie__titulo">Contacto</h2>
+      {correoReal
+        ? <a class="mono" href={`mailto:${SITIO.correo}`}>{correo}</a>
+        : <p class="mono">{correo}</p>}
+    </div>
+  </div>
+
+  <div class="contenedor pie__legal">
+    <p>© {anio} {SITIO.nombre}. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<style>
+  .pie {
+    margin-top: var(--space-32);
+    padding-block: var(--space-16) var(--space-8);
+    border-top: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    font-size: 15px;
+  }
+
+  .pie__grilla {
+    display: grid;
+    gap: var(--space-12);
+  }
+
+  @media (min-width: 768px) {
+    .pie__grilla {
+      grid-template-columns: 2fr 1.4fr 1.2fr 1fr;
+      gap: var(--space-8);
+    }
+  }
+
+  .pie__marca p {
+    max-width: 36ch;
+    margin-top: var(--space-4);
+  }
+
+  .pie__titulo {
+    margin-bottom: var(--space-4);
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .pie ul {
+    display: grid;
+    gap: var(--space-3);
+    padding: 0;
+    list-style: none;
+  }
+
+  .pie a {
+    text-decoration: none;
+  }
+
+  .pie a:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+  }
+
+  .pie__legal {
+    margin-top: var(--space-16);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+</style>

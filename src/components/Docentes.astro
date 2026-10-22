@@ -1,0 +1,81 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { mostrar } from '../lib/formato';
+
+interface Props {
+  docentes: CollectionEntry<'docentes'>[];
+}
+const { docentes } = Astro.props;
+const iniciales = (nombre: string) => nombre.split(' ').map((p) => p[0]).slice(0, 2).join('');
+---
+<ul class="docentes">
+  {docentes.map((p) => (
+    <li class="docente">
+      {p.data.foto
+        ? <img class="docente__foto" src={p.data.foto} alt="" width="72" height="72" loading="lazy" />
+        : <span class="docente__foto docente__foto--iniciales" aria-hidden="true">{iniciales(p.data.nombre)}</span>}
+      <div>
+        <h3>{p.data.nombre}</h3>
+        <p class="docente__titulo">{mostrar(p.data.titulo)}</p>
+        <p class="docente__bio">{mostrar(p.data.bio)}</p>
+        {p.data.linkedin && <a class="docente__enlace" href={p.data.linkedin} rel="noopener" target="_blank">LinkedIn<span class="solo-lectores"> de {p.data.nombre} (abre en una pestaña nueva)</span></a>}
+      </div>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .docentes {
+    display: grid;
+    gap: var(--space-8);
+    padding: 0;
+    list-style: none;
+  }
+
+  @media (min-width: 768px) {
+    .docentes {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .docente {
+    display: flex;
+    gap: var(--space-6);
+    align-items: flex-start;
+  }
+
+  .docente__foto {
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .docente__foto--iniciales {
+    display: grid;
+    place-items: center;
+    background: var(--bg-surface);
+    color: var(--brand-primary);
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .docente__titulo {
+    margin-top: var(--space-1);
+    color: var(--brand-primary);
+    font-weight: 500;
+  }
+
+  .docente__bio {
+    margin-top: var(--space-3);
+    color: var(--text-secondary);
+  }
+
+  .docente__enlace {
+    display: inline-block;
+    margin-top: var(--space-3);
+    font-weight: 500;
+  }
+</style>

@@ -1,0 +1,542 @@
+- document:
+  - link "Ir al contenido":
+    - /url: "#main"
+  - link " +34 91 524 57 85":
+    - /url: tel:+34-91 5245785
+  - link " info@ingeoexpert.com":
+    - /url: mailto:info@ingeoexpert.com
+  - list:
+    - listitem:
+      - link "Mi Cuenta":
+        - /url: https://ingeoexpert.com/mi-cuenta/
+    - listitem:
+      - text: "|"
+      - link "ES":
+        - /url: /
+    - listitem:
+      - text: "|"
+      - link "EN":
+        - /url: /en/
+    - listitem:
+      - link "PT":
+        - /url: /pt/
+  - banner:
+    - link "Ingeoexpert":
+      - /url: https://ingeoexpert.com/
+      - img "Ingeoexpert"
+    - navigation:
+      - list:
+        - listitem:
+          - link "Nosotros":
+            - /url: https://ingeoexpert.com/nosotros/
+        - listitem:
+          - link "Cursos":
+            - /url: https://ingeoexpert.com/cursos/
+        - listitem:
+          - link "Bolsa de empleo":
+            - /url: https://ingeoexpert.com/bolsa-de-empleo/
+        - listitem:
+          - link "Recursos":
+            - /url: https://ingeoexpert.com/recursos/
+        - listitem:
+          - link "Blog":
+            - /url: "#no-link"
+        - listitem:
+          - link "Contacto":
+            - /url: https://ingeoexpert.com/contacto/
+        - listitem:
+          - link "Campus Virtual":
+            - /url: https://ingeoexpert.com/?moodle_auth_userkey
+        - listitem:
+          - link "Alternar búsqueda de la web":
+            - /url: https://ingeoexpert.com/#
+  - main:
+    - article:
+      - heading "Crece con los mejores cursos técnicos online" [level=3]:
+        - text: Crece con los mejores cursos técnicos online
+        - img
+      - paragraph:
+        - text: Obtén conocimientos únicos de la mano de
+        - strong: docentes universitarios de renombre internacional
+        - text: . Cursos exclusivos en las áreas de Ingeniería Civil, Arquitectura, Geología, Minería, Medio Ambiente y Software técnico.
+      - link "Ver cursos":
+        - /url: https://ingeoexpert.com/cursos/
+      - heading "Universidades colaboradoras" [level=3]:
+        - text: Universidades
+        - img
+        - text: colaboradoras
+      - region "Diapositivas":
+        - group "9 / 13":
+          - img "colab-universidad-granada"
+        - group "10 / 13":
+          - img "escudo-horizontal-png"
+        - group "11 / 13":
+          - img "Universidad-Politécnica-de-Cartagena"
+        - group "12 / 13":
+          - img "Captura de pantalla 2025-11-06 132923"
+        - group "13 / 13":
+          - img "69"
+        - group "1 / 13":
+          - img "6"
+        - group "2 / 13":
+          - img "5"
+        - group "3 / 13":
+          - img "complutense2"
+        - group "4 / 13":
+          - img "ovied"
+        - group "5 / 13":
+          - img "universidade-corua-a"
+        - group "6 / 13":
+          - img "salamanca 3"
+        - group "7 / 13":
+          - img "universidad-burgos-750x307"
+        - group "8 / 13":
+          - img "Universidad Rey Juan Carlos"
+        - group "9 / 13":
+          - img "colab-universidad-granada"
+        - group "10 / 13":
+          - img "escudo-horizontal-png"
+        - group "11 / 13":
+          - img "Universidad-Politécnica-de-Cartagena"
+        - group "12 / 13":
+          - img "Captura de pantalla 2025-11-06 132923"
+        - group "13 / 13":
+          - img "69"
+        - group "1 / 13":
+          - img "6"
+        - group "2 / 13":
+          - img "5"
+        - group "3 / 13":
+          - img "complutense2"
+        - group "4 / 13":
+          - img "ovied"
+        - group "5 / 13":
+          - img "universidade-corua-a"
+        - button "Previous slide"
+        - button "Next slide"
+      - heading "Próximos cursos" [level=3]:
+        - text: Próximos cursos
+        - img
+      - list:
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso de AutoCAD Civil 3D aplicado a Ingeniería Civil":
+                - /url: https://ingeoexpert.com/cursos/curso-de-autocad-civil-3d-aplicado-a-ingenieria-civil/
+                - img "Curso de AutoCAD Civil 3D aplicado a Ingeniería Civil"
+            - listitem:
+              - heading "Curso de AutoCAD Civil 3D aplicado a Ingeniería Civil" [level=2]:
+                - link "Curso de AutoCAD Civil 3D aplicado a Ingeniería Civil":
+                  - /url: https://ingeoexpert.com/cursos/curso-de-autocad-civil-3d-aplicado-a-ingenieria-civil/
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso de Estudios Hidrológicos y Estudios de Inundabilidad con QGIS y HEC-RAS":
+                - /url: https://ingeoexpert.com/cursos/curso-de-estudios-hidrologicos-y-estudios-de-inundabilidad-con-qgis-y-hec-ras/
+                - img "Curso de Estudios Hidrológicos y Estudios de Inundabilidad con QGIS y HEC-RAS"
+            - listitem:
+              - heading "Curso de Estudios Hidrológicos y Estudios de Inundabilidad con QGIS y HEC-RAS" [level=2]:
+                - link "Curso de Estudios Hidrológicos y Estudios de Inundabilidad con QGIS y HEC-RAS":
+                  - /url: https://ingeoexpert.com/cursos/curso-de-estudios-hidrologicos-y-estudios-de-inundabilidad-con-qgis-y-hec-ras/
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso de Experto en diseño geotécnico de cimentaciones profundas":
+                - /url: https://ingeoexpert.com/cursos/curso-de-experto-en-diseno-geotecnico-de-cimentaciones-profundas/
+                - img "Curso de Experto en diseño geotécnico de cimentaciones profundas"
+            - listitem:
+              - heading "Curso de Experto en diseño geotécnico de cimentaciones profundas" [level=2]:
+                - link "Curso de Experto en diseño geotécnico de cimentaciones profundas":
+                  - /url: https://ingeoexpert.com/cursos/curso-de-experto-en-diseno-geotecnico-de-cimentaciones-profundas/
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso avanzado de simulación numérica de aguas con Visual MODFLOW":
+                - /url: https://ingeoexpert.com/cursos/curso-avanzado-modflow/
+                - img "Curso avanzado de simulación numérica de aguas con Visual MODFLOW"
+            - listitem:
+              - heading "Curso avanzado de simulación numérica de aguas con Visual MODFLOW" [level=2]:
+                - link "Curso avanzado de simulación numérica de aguas con Visual MODFLOW":
+                  - /url: https://ingeoexpert.com/cursos/curso-avanzado-modflow/
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso de Hidrogeología aplicada":
+                - /url: https://ingeoexpert.com/cursos/curso-de-hidrogeologia-aplicada/
+                - img "Curso de Hidrogeología aplicada"
+            - listitem:
+              - heading "Curso de Hidrogeología aplicada" [level=2]:
+                - link "Curso de Hidrogeología aplicada":
+                  - /url: https://ingeoexpert.com/cursos/curso-de-hidrogeologia-aplicada/
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso de introducción a la modelización con FLAC3D":
+                - /url: https://ingeoexpert.com/cursos/introduccion-a-la-modelizacion-con-flac3d/
+                - img "Curso de introducción a la modelización con FLAC3D"
+            - listitem:
+              - heading "Curso de introducción a la modelización con FLAC3D" [level=2]:
+                - link "Curso de introducción a la modelización con FLAC3D":
+                  - /url: https://ingeoexpert.com/cursos/introduccion-a-la-modelizacion-con-flac3d/
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso de QGIS aplicado a exploración geológica y minería":
+                - /url: https://ingeoexpert.com/cursos/curso-de-qgis-para-exploracion-geologica-y-mineria/
+                - img "Curso de QGIS aplicado a exploración geológica y minería"
+            - listitem:
+              - heading "Curso de QGIS aplicado a exploración geológica y minería" [level=2]:
+                - link "Curso de QGIS aplicado a exploración geológica y minería":
+                  - /url: https://ingeoexpert.com/cursos/curso-de-qgis-para-exploracion-geologica-y-mineria/
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso de diseño de túneles convencionales en terreno blando":
+                - /url: https://ingeoexpert.com/cursos/curso-de-diseno-tuneles-convencionales-en-terreno-blando/
+                - img "Curso de diseño de túneles convencionales en terreno blando"
+            - listitem:
+              - heading "Curso de diseño de túneles convencionales en terreno blando" [level=2]:
+                - link "Curso de diseño de túneles convencionales en terreno blando":
+                  - /url: https://ingeoexpert.com/cursos/curso-de-diseno-tuneles-convencionales-en-terreno-blando/
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso de instrumentación en túneles urbanos":
+                - /url: https://ingeoexpert.com/cursos/curso-de-instrumentacion-en-tuneles-urbanos/
+                - img "Curso de instrumentación en túneles urbanos"
+            - listitem:
+              - heading "Curso de instrumentación en túneles urbanos" [level=2]:
+                - link "Curso de instrumentación en túneles urbanos":
+                  - /url: https://ingeoexpert.com/cursos/curso-de-instrumentacion-en-tuneles-urbanos/
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso de modelización numérica con PLAXIS 2D":
+                - /url: https://ingeoexpert.com/cursos/curso-de-modelizacion-numerica-con-plaxis-2d/
+                - img "Curso de modelización numérica con PLAXIS 2D"
+            - listitem:
+              - heading "Curso de modelización numérica con PLAXIS 2D" [level=2]:
+                - link "Curso de modelización numérica con PLAXIS 2D":
+                  - /url: https://ingeoexpert.com/cursos/curso-de-modelizacion-numerica-con-plaxis-2d/
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso de Paleontología básica":
+                - /url: https://ingeoexpert.com/cursos/curso-de-paleontologia-basica/
+                - img "Curso de Paleontología básica"
+            - listitem:
+              - heading "Curso de Paleontología básica" [level=2]:
+                - link "Curso de Paleontología básica":
+                  - /url: https://ingeoexpert.com/cursos/curso-de-paleontologia-basica/
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso de modelización geológica con Leapfrog Geo":
+                - /url: https://ingeoexpert.com/cursos/curso-de-modelizacion-geologica-con-leapfrog-geo/
+                - img "Curso de modelización geológica con Leapfrog Geo"
+            - listitem:
+              - heading "Curso de modelización geológica con Leapfrog Geo" [level=2]:
+                - link "Curso de modelización geológica con Leapfrog Geo":
+                  - /url: https://ingeoexpert.com/cursos/curso-de-modelizacion-geologica-con-leapfrog-geo/
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso de Cálculo y Gestión de la Huella de Carbono":
+                - /url: https://ingeoexpert.com/cursos/curso-de-calculo-y-gestion-de-la-huella-de-carbono-2/
+                - img "Curso de Cálculo y Gestión de la Huella de Carbono"
+            - listitem:
+              - heading "Curso de Cálculo y Gestión de la Huella de Carbono" [level=2]:
+                - link "Curso de Cálculo y Gestión de la Huella de Carbono":
+                  - /url: https://ingeoexpert.com/cursos/curso-de-calculo-y-gestion-de-la-huella-de-carbono-2/
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso de diseño de túneles con RS2 y RS3":
+                - /url: https://ingeoexpert.com/cursos/curso-de-diseno-de-tuneles-con-rs2-y-rs3/
+                - img "Curso de diseño de túneles con RS2 y RS3"
+            - listitem:
+              - heading "Curso de diseño de túneles con RS2 y RS3" [level=2]:
+                - link "Curso de diseño de túneles con RS2 y RS3":
+                  - /url: https://ingeoexpert.com/cursos/curso-de-diseno-de-tuneles-con-rs2-y-rs3/
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso de introducción al diseño de estructuras hidráulicas":
+                - /url: https://ingeoexpert.com/cursos/curso-de-introduccion-al-diseno-estructuras-hidraulicas/
+                - img "Curso de introducción al diseño de estructuras hidráulicas"
+            - listitem:
+              - heading "Curso de introducción al diseño de estructuras hidráulicas" [level=2]:
+                - link "Curso de introducción al diseño de estructuras hidráulicas":
+                  - /url: https://ingeoexpert.com/cursos/curso-de-introduccion-al-diseno-estructuras-hidraulicas/
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso de compactación superficial y profunda de suelos en obras de ingeniería civil y edificación":
+                - /url: https://ingeoexpert.com/cursos/curso-de-compactacion-superficial-y-profunda-de-suelos-en-obras-de-ingenieria-civil-y-edificacion/
+                - img "Curso de compactación superficial y profunda de suelos en obras de ingeniería civil y edificación"
+            - listitem:
+              - heading "Curso de compactación superficial y profunda de suelos en obras de ingeniería civil y edificación" [level=2]:
+                - link "Curso de compactación superficial y profunda de suelos en obras de ingeniería civil y edificación":
+                  - /url: https://ingeoexpert.com/cursos/curso-de-compactacion-superficial-y-profunda-de-suelos-en-obras-de-ingenieria-civil-y-edificacion/
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso de procesamiento, edición e interpretación de datos de testificación geofísica en sondeos mediante software WellCAD":
+                - /url: https://ingeoexpert.com/cursos/curso-de-procesamiento-interpretacion-sondeos-wellcad/
+                - img "Curso de procesamiento, edición e interpretación de datos de testificación geofísica en sondeos mediante software WellCAD"
+            - listitem:
+              - heading "Curso de procesamiento, edición e interpretación de datos de testificación geofísica en sondeos mediante software WellCAD" [level=2]:
+                - link "Curso de procesamiento, edición e interpretación de datos de testificación geofísica en sondeos mediante software WellCAD":
+                  - /url: https://ingeoexpert.com/cursos/curso-de-procesamiento-interpretacion-sondeos-wellcad/
+        - listitem:
+          - list:
+            - listitem:
+              - 'link "Curso de QGIS: nivel básico-intermedio"':
+                - /url: https://ingeoexpert.com/cursos/curso-de-qgis-nivel-basico-2/
+                - 'img "Curso de QGIS: nivel básico-intermedio"'
+            - listitem:
+              - 'heading "Curso de QGIS: nivel básico-intermedio" [level=2]':
+                - 'link "Curso de QGIS: nivel básico-intermedio"':
+                  - /url: https://ingeoexpert.com/cursos/curso-de-qgis-nivel-basico-2/
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso de fabricación y puesta en obra del hormigón":
+                - /url: https://ingeoexpert.com/cursos/curso-de-fabricacion-y-puesta-en-obra-del-hormigon/
+                - img "Curso de fabricación y puesta en obra del hormigón"
+            - listitem:
+              - heading "Curso de fabricación y puesta en obra del hormigón" [level=2]:
+                - link "Curso de fabricación y puesta en obra del hormigón":
+                  - /url: https://ingeoexpert.com/cursos/curso-de-fabricacion-y-puesta-en-obra-del-hormigon/
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso de técnicas de teledetección aplicadas a la Geología":
+                - /url: https://ingeoexpert.com/cursos/curso-de-tecnicas-de-teledeteccion-aplicadas-a-la-geologia/
+                - img "Curso de técnicas de teledetección aplicadas a la Geología"
+            - listitem:
+              - heading "Curso de técnicas de teledetección aplicadas a la Geología" [level=2]:
+                - link "Curso de técnicas de teledetección aplicadas a la Geología":
+                  - /url: https://ingeoexpert.com/cursos/curso-de-tecnicas-de-teledeteccion-aplicadas-a-la-geologia/
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso de experto en AutoCAD Civil 3D":
+                - /url: https://ingeoexpert.com/cursos/curso-de-experto-en-autocad-civil-3d/
+                - img "Curso de experto en AutoCAD Civil 3D"
+            - listitem:
+              - heading "Curso de experto en AutoCAD Civil 3D" [level=2]:
+                - link "Curso de experto en AutoCAD Civil 3D":
+                  - /url: https://ingeoexpert.com/cursos/curso-de-experto-en-autocad-civil-3d/
+      - link "Ver más cursos próximos":
+        - /url: /cursos-online/featured/
+      - heading "Hemos sido premiados durante 10 años consecutivos con el \"Sello Cum Laude\" de Emagister" [level=3]
+      - paragraph:
+        - strong: Más de 30000 alumnos
+        - text: de todo el mundo han pasado ya por nuestros cursos. Da un salto profesional y
+        - strong: refuerza tu CV
+        - text: .
+      - heading "Cursos por especialidad" [level=3]
+      - heading "GEOLOGÍA" [level=2]:
+        - link "GEOLOGÍA":
+          - /url: https://ingeoexpert.com/cursos-online/geologia/
+      - link "Ver todos":
+        - /url: https://ingeoexpert.com/cursos-online/geologia/
+      - heading "MINERÍA" [level=2]:
+        - link "MINERÍA":
+          - /url: https://ingeoexpert.com/cursos-online/mineria/
+      - link "Ver todos":
+        - /url: https://ingeoexpert.com/cursos-online/mineria/
+      - heading "INGENIERÍA CIVIL" [level=2]:
+        - link "INGENIERÍA CIVIL":
+          - /url: https://ingeoexpert.com/cursos-online/ingenieriacivil/
+      - link "Ver todos":
+        - /url: https://ingeoexpert.com/cursos-online/ingenieriacivil/
+      - heading "ARQUITECTURA" [level=2]:
+        - link "ARQUITECTURA":
+          - /url: https://ingeoexpert.com/cursos-online/ARQuitectura/
+      - link "Ver todos":
+        - /url: https://ingeoexpert.com/cursos-online/ARQuitectura/
+      - heading "MEDIO AMBIENTE" [level=2]:
+        - link "MEDIO AMBIENTE":
+          - /url: https://ingeoexpert.com/cursos-online/medioambiente/
+      - link "Ver todos":
+        - /url: https://ingeoexpert.com/cursos-online/medioambiente/
+      - heading "SOFTWARE" [level=2]:
+        - link "SOFTWARE":
+          - /url: https://ingeoexpert.com/cursos-online/software/
+      - link "Ver todos":
+        - /url: https://ingeoexpert.com/cursos-online/software/
+      - paragraph:
+        - strong: Más de 20000 certificados
+        - text: emitidos
+      - heading "Opiniones acerca de nuestros cursos" [level=3]
+      - region "Diapositivas":
+        - group "11 / 11": "\"La metodología de enseñanza online ofrecida por Ingeoexpert resultó ser excelente ya que cuentan con una estructura organizada y planificada para dar las tutorías, permitiendo que el alumno pueda poner en práctica los conocimientos adquiridos\" Edisson Avila Curso de Infraworks: 3D Smart BIM Projects para Ingeniería Civil"
+        - group "1 / 11":
+          - text: “La organización y calidad del curso son de alto nivel. El contenido del curso es de gran utilidad para mi trabajo y desde luego lo pondré en práctica si tengo oportunidad. Ingeoexpert demuestra estar a un gran nivel en este curso fruto sin duda del esfuerzo y dedicación de todos sus trabajadores y directores. Especial mención al docente David Simón, excelente profesional y gran comunicador. Apetece apuntarse a un curso de Ingeoexpert si David es docente, con independencia de su contenido.”
+          - img "Antonio Carlos Benavides García"
+          - text: Antonio Carlos Benavides García Curso de AutoCAD Civil 3D aplicado a Ingeniería Civil
+        - group "2 / 11":
+          - text: “Como Ingeniero Geólogo, el curso me ha servido para concretar mis conocimientos sobre Mecánica de Rocas e Ingeniería de Túneles. El profesorado es muy bueno y los contenidos ayudan mucho al aprendizaje. Es, sin duda, un curso para recomendar.”
+          - img "Pablo Baena Niño"
+          - text: Pablo Baena Niño Curso de Diseño Geotécnico estructural de túneles
+        - group "3 / 11":
+          - text: “Curso práctico y bien orientado, junto con un excelente trabajo por parte del docente. La verdad es que me ha ayudado muchísimo en mi trabajo profesional. Totalmente recomendable.”
+          - img "Jordi Adell Planas"
+          - text: Jordi Adell Planas Curso de Análisis cuantitativo de riesgos ambientales
+        - group "4 / 11":
+          - text: “Me gustó mucho el curso. Es muy práctico y enfocado a cada uno de los objetivos. Excelente guía del profesor, siempre atento y presto a resolver dudas y plantear debates. En mi desarrollo profesional, los temas afianzaron conocimientos y en muchos casos aprendí cosas totalmente nuevas. La plataforma web es intuitiva y amigable. Lo remiendo 100%.”
+          - img "David José Mendi Fernández"
+          - text: David José Mendi Fernández Curso de Procedimientos de contención y control del agua subterránea en obras de Ingeniería Civil y Edificación
+        - group "5 / 11":
+          - text: “Excelente curso. Muy completo!. El enfoque práctico del curso ayuda mucho a su realización y aprendizaje. Las explicaciones son muy claras de parte de los instructores.”
+          - img "Pablo Duarte Milanovic"
+          - text: Pablo Duarte Milanovic Curso de Estudios Hidrológicos y Estudios de Inundabilidad con QGIS y HEC-RAS
+        - group "6 / 11":
+          - text: “Nuevamente, estoy muy agradecida a Ingeoexpert por la calidad de los cursos ofrecidos. El profesor del curso de instrumentación geotécnica, Sr, Josep Raventós, entrega sus conocimientos y experiencia con mucha claridad. Siempre dispuesto a responder cualquier consulta tanto en sus clases on line, como a través de correo. 100% recomendado.”
+          - img "Elizabeth Mockridge"
+          - text: Elizabeth Mockridge Curso de instrumentación geotécnica en proyectos de ingenieria civil y minería
+        - group "7 / 11":
+          - text: “Con gran diferencia a muchos contenidos que se ofrecen en la red, este curso de Qgis con Ingeoexpert el resultado está garantizado. Expertos en la materia y un seguimiento semanal hacen de éste un curso excepcional, con una plataforma didáctica bien estructurada y contenidos muy completos. Totalmente recomendable y a tener en cuenta para otros cursos.”
+          - img "Fernando Martínez Soto"
+          - text: "Fernando Martínez Soto Curso de QGIS: nivel básico-intermedio"
+        - group "8 / 11":
+          - text: “El Curso de Cálculo y Gestión de la Huella de Carbono ha sido una experiencia reconfortante y exigente. El nivel que se maneja es alto, y te invita a estudiar y leer mas sobre el tema. Sin duda estaré expectante a ver que otro curso puedo tomar en un futuro inmediato.”
+          - img "Jorge Calderón"
+          - text: Jorge Calderón Curso de Cálculo y Gestión de la Huella de Carbono
+        - group "9 / 11":
+          - text: “La estructura, organización y calidad del curso me ha sorprendido gratamente. Además, el enfoque práctico del mismo me ha servido enormemente para mi trabajo, poniendo en práctica los conocimientos adquiridos. Seguiré haciendo más cursos en este centro, sin duda”.
+          - img "Mario Sevillano"
+          - text: Mario Sevillano Curso de AutoCAD Civil 3D aplicado a Geología y Topografía
+        - group "10 / 11": “El curso me ha parecido genial, de gran utilidad para mi profesión. Ha reforzado mis conocimientos en geología, permitiéndome estudiarla desde otro punto de vista. En fin, un curso completo, bien estructurado, fácil de trabajar online. Lo recomendaré sin dudar.” Sarymar Barreto Saavedra Curso de Patrimonio Geológico y Geoconservación
+        - group "11 / 11": "\"La metodología de enseñanza online ofrecida por Ingeoexpert resultó ser excelente ya que cuentan con una estructura organizada y planificada para dar las tutorías, permitiendo que el alumno pueda poner en práctica los conocimientos adquiridos\" Edisson Avila Curso de Infraworks: 3D Smart BIM Projects para Ingeniería Civil"
+        - group "1 / 11":
+          - text: “La organización y calidad del curso son de alto nivel. El contenido del curso es de gran utilidad para mi trabajo y desde luego lo pondré en práctica si tengo oportunidad. Ingeoexpert demuestra estar a un gran nivel en este curso fruto sin duda del esfuerzo y dedicación de todos sus trabajadores y directores. Especial mención al docente David Simón, excelente profesional y gran comunicador. Apetece apuntarse a un curso de Ingeoexpert si David es docente, con independencia de su contenido.”
+          - img "Antonio Carlos Benavides García"
+          - text: Antonio Carlos Benavides García Curso de AutoCAD Civil 3D aplicado a Ingeniería Civil
+        - button "Previous slide"
+        - button "Next slide"
+      - heading "Confían en nosotros empresas como" [level=3]
+      - paragraph:
+        - text: Obtén conocimientos únicos con docentes
+        - strong: universitarios de renombre internacional
+      - heading "También colaboran" [level=3]
+      - text: Suscríbete a nuestra newsletter
+      - paragraph: Recibe todas nuestras novedades en tu email y aprovéchate de promociones especiales para nuestros próximos cursos suscribiéndote a nuestra newsletter.
+      - paragraph:
+        - textbox "Tu nombre"
+      - paragraph:
+        - textbox "Tus apellidos"
+      - paragraph:
+        - textbox "Tu email"
+      - paragraph:
+        - button "Suscribir"
+      - paragraph:
+        - checkbox "Acepto la política de privacidad"
+        - text: Acepto la
+        - link "política de privacidad":
+          - /url: https://ingeoexpert.com/politica-de-privacidad/
+  - contentinfo:
+    - heading "Ingeoexpert" [level=4]
+    - paragraph:
+      - text: "Calle de Velázquez, 157 28002. Madrid (España) Tlf:"
+      - link "(+34) 91 524 57 85":
+        - /url: tel:+34915245785
+      - text: "Email: info@ingeoexpert.com"
+    - heading "TEMÁTICA DE CURSOS" [level=4]
+    - list:
+      - listitem:
+        - link "Ingeniería Civil":
+          - /url: https://ingeoexpert.com/cursos-online/ingenieriacivil/
+      - listitem:
+        - link "Arquitectura":
+          - /url: https://ingeoexpert.com/cursos-online/arquitectura/
+      - listitem:
+        - link "Geología":
+          - /url: https://ingeoexpert.com/cursos-online/geologia/
+      - listitem:
+        - link "Minería":
+          - /url: https://ingeoexpert.com/cursos-online/mineria/
+      - listitem:
+        - link "Medioambiente":
+          - /url: https://ingeoexpert.com/cursos-online/medioambiente/
+      - listitem:
+        - link "Software":
+          - /url: https://ingeoexpert.com/cursos-online/software/
+    - heading "EN NUESTRO BLOG" [level=4]
+    - list:
+      - listitem:
+        - 'link "Piedras preciosas: Qué determina su valor y dureza"':
+          - /url: https://ingeoexpert.com/2026/09/30/piedras-preciosas-que-determina-su-valor-y-dureza/
+          - 'img "Piedras preciosas: Qué determina su valor y dureza"'
+        - 'link "Piedras preciosas: Qué determina su valor y dureza"':
+          - /url: https://ingeoexpert.com/2026/09/30/piedras-preciosas-que-determina-su-valor-y-dureza/
+        - text: 30 septiembre, 2026
+      - listitem:
+        - 'link "Túneles TBM: Cómo funcionan las tuneladoras gigantes (las “topos”)"':
+          - /url: https://ingeoexpert.com/2026/09/30/tuneles-tbm-como-funcionan-las-tuneladoras-gigantes-las-topos/
+          - 'img "Túneles TBM: Cómo funcionan las tuneladoras gigantes (las “topos”)"'
+        - 'link "Túneles TBM: Cómo funcionan las tuneladoras gigantes (las “topos”)"':
+          - /url: https://ingeoexpert.com/2026/09/30/tuneles-tbm-como-funcionan-las-tuneladoras-gigantes-las-topos/
+        - text: 30 septiembre, 2026
+      - listitem:
+        - link "Diplodocus en Teruel, el fósil que reescribe el mapa del Jurásico":
+          - /url: https://ingeoexpert.com/2026/09/30/diplodocus-en-teruel-el-fosil-que-reescribe-el-mapa-del-jurasico/
+          - img "Diplodocus en Teruel, el fósil que reescribe el mapa del Jurásico"
+        - link "Diplodocus en Teruel, el fósil que reescribe el mapa del Jurásico":
+          - /url: https://ingeoexpert.com/2026/09/30/diplodocus-en-teruel-el-fosil-que-reescribe-el-mapa-del-jurasico/
+        - text: 30 septiembre, 2026
+    - heading "SÍGUENOS EN" [level=4]
+    - list:
+      - listitem:
+        - link "LinkedIn":
+          - /url: https://www.linkedin.com/company/ingeoexpert
+        - text: Se abre en una nueva pestaña
+      - listitem:
+        - link "Facebook":
+          - /url: https://www.facebook.com/ingeoexpert
+        - text: Se abre en una nueva pestaña
+      - listitem:
+        - link "X":
+          - /url: https://twitter.com/Ingeoexpert
+        - text: Se abre en una nueva pestaña
+      - listitem:
+        - link "Instagram":
+          - /url: https://www.instagram.com/Ingeoexpert/
+        - text: Se abre en una nueva pestaña
+      - listitem:
+        - link "Youtube":
+          - /url: https://www.youtube.com/@ingeoexpert2870
+        - text: Se abre en una nueva pestaña
+    - paragraph: "Ingeoexpert es una institución Elearning acreditada por:"
+    - paragraph
+    - list:
+      - listitem:
+        - link "Términos y condiciones":
+          - /url: https://ingeoexpert.com/terminos-y-condiciones/
+        - text: "|"
+      - listitem:
+        - link "Política de privacidad":
+          - /url: https://ingeoexpert.com/politica-de-privacidad/
+        - text: "|"
+      - listitem:
+        - link "Política de cookies":
+          - /url: /politica-de-privacidad/#cookies
+        - text: "|"
+      - listitem:
+        - link "Preguntas frecuentes":
+          - /url: /nosotros/#faq
+    - contentinfo: © Copyright - Ingeoexpert - Formación y cursos especializados en geología, minería e ingeniería civil.
+  - complementary "Banner de cookies RGPD":
+    - paragraph: Utilizamos cookies para ofrecerte la mejor experiencia en nuestra web.
+    - paragraph:
+      - text: Puedes aprender más sobre qué cookies utilizamos o desactivarlas en los
+      - button "ajustes"
+      - text: .
+    - button "Aceptar"
+    - button "Rechazar"
+    - button "Ajustes"
+  - text: desktop
+  - status
+  - iframe

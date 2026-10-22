@@ -1,0 +1,119 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Formulario from '../../../components/Formulario.astro';
+import Campo from '../../../components/Campo.astro';
+import { cohorteAbierta } from '../../../lib/cohortes';
+import { formatoCLP, formatoFecha } from '../../../lib/formato';
+
+export async function getStaticPaths() {
+  const cursos = await getCollection('cursos');
+  return cursos.map((curso) => ({ params: { slug: curso.id }, props: { curso } }));
+}
+
+const { curso } = Astro.props;
+const d = curso.data;
+const cohorte = cohorteAbierta(d.cohortes);
+const pago = `/inscripcion/${curso.id}/pago/`;
+---
+<Base titulo={`Inscripción · ${d.titulo}`}>
+  <meta slot="head" name="robots" content="noindex" />
+
+  <div class="contenedor inscripcion-pagina">
+    <p class="paso mono">Paso 1 de 2 · Tus datos</p>
+    <h1>Inscripción</h1>
+    <p class="resumen">
+      <a href={`/cursos/${curso.id}/`}>{d.titulo}</a>
+      {cohorte && <> · inicia el {formatoFecha(cohorte.inicio)} · <span class="mono">{formatoCLP(d.precioCLP)}</span> CLP</>}
+    </p>
+
+    {cohorte ? (
+      <>
+        <p class="nota">
+          Registramos tus datos y en el paso siguiente pagas con Mercado Pago. Usa el <strong>mismo correo</strong> en ambos
+          pasos: así asociamos tu pago a tu inscripción.
+        </p>
+        <Formulario nombre="inscripcion" accion={pago} redirigir={pago} etiquetaEnviar="Continuar al pago">
+          <input type="hidden" name="curso" value={curso.id} />
+          <input type="hidden" name="cohorte" value={cohorte.id} />
+          <input type="hidden" name="precio-clp" value={d.precioCLP} />
+          <input type="hidden" name="id-inscripcion" value="" />
+          <Campo etiqueta="Nombre y apellido" name="nombre" autocomplete="name" required minlength={3} />
+          <Campo etiqueta="Correo electrónico" name="correo" type="email" autocomplete="email" required
+            ayuda="El mismo que usarás en Mercado Pago. Aquí recibirás el enlace de Google Meet." />
+          <Campo etiqueta="País" name="pais" autocomplete="country-name" required value="Chile" />
+          <Campo etiqueta="Profesión" name="profesion" autocomplete="organization-title" required />
+          <Campo etiqueta="Empresa o institución" name="empresa" autocomplete="organization" />
+          <div class="acepto">
+            <input type="checkbox" id="campo-terminos" name="acepta-terminos" value="si" required aria-describedby="campo-terminos-error"
+              data-mensaje-faltante="Para continuar debes aceptar los términos de inscripción." />
+            <label for="campo-terminos">Acepto los <a href="/terminos/" target="_blank">términos de inscripción</a> y la <a href="/privacidad/" target="_blank">política de privacidad</a>.</label>
+            <p class="campo__error" id="campo-terminos-error" data-error-de="campo-terminos" hidden></p>
+          </div>
+        </Formulario>
+      </>
+    ) : (
+      <div class="cerrada">
+        <p>Este curso no tiene una cohorte con inscripciones abiertas.</p>
+        <a class="boton boton--secundario" href={`/cursos/${curso.id}/#informacion`}>Avísame de la próxima cohorte</a>
+      </div>
+    )}
+  </div>
+</Base>
+
+<style>
+  .inscripcion-pagina {
+    max-width: 640px;
+    padding-block: var(--space-16);
+  }
+
+  .paso {
+    color: var(--brand-accent);
+    font-size: 14px;
+  }
+
+  h1 {
+    margin-top: var(--space-3);
+    font-size: var(--fs-h1);
+  }
+
+  .resumen {
+    margin-top: var(--space-3);
+    color: var(--text-secondary);
+  }
+
+  .nota {
+    margin-block: var(--space-8);
+    padding: var(--space-4) var(--space-6);
+    border-left: 2px solid var(--brand-primary);
+    color: var(--text-secondary);
+  }
+
+  .acepto {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-2) var(--space-3);
+    align-items: start;
+  }
+
+  .acepto input {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    accent-color: var(--brand-primary);
+  }
+
+  .acepto .campo__error {
+    grid-column: 2;
+    color: var(--brand-accent);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .cerrada {
+    display: grid;
+    gap: var(--space-4);
+    justify-items: start;
+    margin-top: var(--space-8);
+  }
+</style>

@@ -1,0 +1,77 @@
+---
+interface Props {
+  secciones: { id: string; texto: string }[];
+}
+const { secciones } = Astro.props;
+---
+<nav class="subnav" aria-label="Secciones del curso" data-subnav>
+  <ul class="contenedor">
+    {secciones.map((s) => <li><a href={`#${s.id}`}>{s.texto}</a></li>)}
+  </ul>
+</nav>
+
+<style>
+  .subnav {
+    position: sticky;
+    top: 72px;
+    z-index: 40;
+    background: color-mix(in srgb, var(--bg-canvas) 92%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .subnav ul {
+    display: flex;
+    gap: var(--space-1);
+    overflow-x: auto;
+    scrollbar-width: none;
+    list-style: none;
+    padding-block: var(--space-2);
+  }
+
+  .subnav a {
+    display: block;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-pill);
+    color: var(--text-secondary);
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: color var(--dur-base) var(--ease-out), background-color var(--dur-base) var(--ease-out);
+  }
+
+  .subnav a:hover,
+  .subnav a[aria-current='true'] {
+    color: var(--text-primary);
+    background: var(--bg-surface);
+  }
+</style>
+
+<script>
+  const nav = document.querySelector<HTMLElement>('[data-subnav]');
+  if (nav && 'IntersectionObserver' in window) {
+    const enlaces = new Map(
+      [...nav.querySelectorAll<HTMLAnchorElement>('a')].map((a) => [a.hash.slice(1), a]),
+    );
+    const marcar = (id: string) => {
+      for (const [clave, a] of enlaces) {
+        if (clave === id) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
+      }
+      enlaces.get(id)?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    };
+    const observador = new IntersectionObserver(
+      (entradas) => {
+        const visible = entradas.filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+        if (visible) marcar(visible.target.id);
+      },
+      { rootMargin: '-140px 0px -60% 0px' },
+    );
+    for (const id of enlaces.keys()) {
+      const seccion = document.getElementById(id);
+      if (seccion) observador.observe(seccion);
+    }
+  }
+</script>

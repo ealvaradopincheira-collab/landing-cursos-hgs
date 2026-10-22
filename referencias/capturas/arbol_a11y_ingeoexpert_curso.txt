@@ -1,0 +1,812 @@
+- document:
+  - link "Ir al contenido":
+    - /url: "#main"
+  - link " +34 91 524 57 85":
+    - /url: tel:+34-91 5245785
+  - link " info@ingeoexpert.com":
+    - /url: mailto:info@ingeoexpert.com
+  - text: CLP CLP EUR US$ MXN ARS COP CLP UYU PYG PEN BOB
+  - list:
+    - listitem:
+      - link "Mi Cuenta":
+        - /url: https://ingeoexpert.com/mi-cuenta/
+    - listitem:
+      - text: "|"
+      - link "ES":
+        - /url: /
+    - listitem:
+      - text: "|"
+      - link "EN":
+        - /url: /en/
+    - listitem:
+      - link "PT":
+        - /url: /pt/
+  - banner:
+    - link "Ingeoexpert":
+      - /url: https://ingeoexpert.com/
+      - img "Ingeoexpert"
+    - navigation:
+      - list:
+        - listitem:
+          - link "Nosotros":
+            - /url: https://ingeoexpert.com/nosotros/
+        - listitem:
+          - link "Cursos":
+            - /url: https://ingeoexpert.com/cursos/
+        - listitem:
+          - link "Bolsa de empleo":
+            - /url: https://ingeoexpert.com/bolsa-de-empleo/
+        - listitem:
+          - link "Recursos":
+            - /url: https://ingeoexpert.com/recursos/
+        - listitem:
+          - link "Blog":
+            - /url: "#no-link"
+        - listitem:
+          - link "Contacto":
+            - /url: https://ingeoexpert.com/contacto/
+        - listitem:
+          - link "Campus Virtual":
+            - /url: https://ingeoexpert.com/?moodle_auth_userkey
+        - listitem:
+          - link "Alternar búsqueda de la web":
+            - /url: https://ingeoexpert.com/#
+  - main:
+    - article:
+      - list:
+        - listitem:
+          - link "Ver producto anterior":
+            - /url: https://ingeoexpert.com/cursos/curso-de-energia-solar-fotovoltaica/
+          - link "Curso de Energía solar fotovoltaica":
+            - /url: https://ingeoexpert.com/cursos/curso-de-energia-solar-fotovoltaica/
+        - listitem:
+          - link "Ver producto siguiente":
+            - /url: https://ingeoexpert.com/cursos/curso-de-prevencion-de-desastres-naturales/
+          - link "Curso de reducción del riesgo de desastres asociados a fenómenos naturales":
+            - /url: https://ingeoexpert.com/cursos/curso-de-prevencion-de-desastres-naturales/
+      - figure:
+        - iframe
+      - heading "Curso de Hidrogeología aplicada" [level=1]
+      - img "Valorado en 4.82 de 5":
+        - text: SSSSS SSSSS Valorado
+        - strong: "4.82"
+        - text: sobre 5 basado en SSSSS 45 puntuaciones de clientes
+      - link "(46 valoraciones de clientes)":
+        - /url: "#reviews"
+      - table:
+        - rowgroup:
+          - 'row " Modalidad: Online"':
+            - rowheader ""
+            - 'cell "Modalidad: Online"':
+              - paragraph: "Modalidad: Online"
+          - row " 50 horas / 6 semanas online":
+            - rowheader ""
+            - cell "50 horas / 6 semanas online":
+              - paragraph: 50 horas / 6 semanas online
+          - 'row " Fechas: 03/11/2026 al 15/12/2026"':
+            - rowheader ""
+            - 'cell "Fechas: 03/11/2026 al 15/12/2026"':
+              - paragraph: "Fechas: 03/11/2026 al 15/12/2026"
+      - table:
+        - rowgroup:
+          - row "General Desempleado O Estudiante":
+            - cell "General"
+            - cell "Desempleado O Estudiante"
+          - row "266750CLP 192060CLP":
+            - cell "266750CLP"
+            - cell "192060CLP"
+          - row "Matricúlate Matricúlate":
+            - cell "Matricúlate":
+              - button "Matricúlate"
+            - cell "Matricúlate":
+              - button "Matricúlate"
+      - table:
+        - rowgroup:
+          - row "*El precio visible es el cambio actual con respecto al precio fijo del curso en euros":
+            - cell "*El precio visible es el cambio actual con respecto al precio fijo del curso en euros":
+              - heading "*El precio visible es el cambio actual con respecto al precio fijo del curso en euros" [level=6]:
+                - strong:
+                  - emphasis:
+                    - strong: "*El precio visible es el cambio actual con respecto al precio fijo del curso en euros"
+      - paragraph
+      - tablist:
+        - tab "Descripción":
+          - link "Descripción":
+            - /url: "#tab-description"
+        - tab "Contenido":
+          - link "Contenido":
+            - /url: "#tab-programa_tab"
+        - tab "Profesorado":
+          - link "Profesorado":
+            - /url: "#tab-profesorado_tab"
+        - tab "Método didáctico":
+          - link "Método didáctico":
+            - /url: "#tab-metodo_tab"
+        - tab "Dirigido a":
+          - link "Dirigido a":
+            - /url: "#tab-dirigido_tab"
+        - tab "Certificado":
+          - link "Certificado":
+            - /url: "#tab-certificado_tab"
+        - tab "Salidas laborales":
+          - link "Salidas laborales":
+            - /url: "#tab-salidas_tab"
+      - tabpanel "Descripción":
+        - paragraph: Accede a nuestra bolsa de empleo nacional e internacional al finalizar el curso
+        - heading "Presentación" [level=3]
+        - paragraph: La Hidrogeología es la ciencia que estudia el ciclo de las aguas superficiales y subterráneas, así como su prospección, captación y protección.
+        - paragraph: Actualmente, su estudio se hace fundamental en diversos campos de actividad profesional, tales como la obtención y gestión sostenible de recursos hídricos, la ingeniería civil e hidráulica, así como en la protección del medio ambiente.
+        - paragraph: Este curso, impartido por Alberto Barrera García, hidrogeólogo senior, experto en simulación numérica de acuíferos, proporcionará al alumno los conocimientos esenciales para poder aportar soluciones frente a problemas de escasez de agua, de afecciones a obras que intervengan con el ciclo hídrico y sobre la afección a las aguas subterráneas generadas por actividades antrópicas.
+        - paragraph: Entre los materiales a trabajar en el curso, se utilizará software de interpretación de ensayos de bombeo, técnicas GIS aplicadas a la hidrogeología e interpretación de cortes hidrogeológicos para su construcción en 3D.
+        - paragraph: El contenido será impartido a través de contenidos multimedia interactivos y de alta calidad dentro de la plataforma virtual Moodle, combinado con la realización de ejercicios prácticos. Asimismo, se realizarán clases en directo y videoconferencias, que podrán ser vistas en diferido en caso de no poder estar presente en las mismas.
+        - heading "Objetivos" [level=3]
+        - paragraph: El principal objetivo del curso es dar a conocer los conceptos fundamentales para desarrollar una labor profesional en el campo de la hidrogeología, enfocando el aprendizaje sobre aquellos aspectos más prácticos y demandados por el mercado laboral.
+        - separator
+        - paragraph:
+          - strong: Plazas limitadas.
+        - separator
+        - paragraph:
+          - text: Puedes ver más cursos de geotecnia en
+          - link "este enlace":
+            - /url: https://ingeoexpert.com/cursos-online/geotecnia/
+          - text: .
+      - heading "46 valoraciones en Curso de Hidrogeología aplicada" [level=2]
+      - list:
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Eduardo Avila
+            - text: –
+            - time: 9 abril, 2018
+          - paragraph: El compromiso brindado por el profesor para resolver cualquier duda, hizo que el curso sea más interesante. La interacción en las videoconferencias con personas de otros países y la apertura del profesor a cualquier tema relacionado ayudó mucho. Sin duda realizaré otros cursos mediante esta plataforma.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Natalia Amieva Carreño
+            - text: –
+            - time: 10 julio, 2018
+          - paragraph: Tanto los contenidos teóricos de los 3 módulos como la parte práctica de cada uno de ellos me ha resultado interesante y útil. El profesor ha explicado muy bien los contenidos. Seguro que haré algún curso más con INGEOEXPERT.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Martin Etchebar
+            - text: –
+            - time: 14 noviembre, 2018
+          - paragraph: Muy buen curso para refrescar e incorporar nuevos conocimientos en el campo de la hidrogeología. Me ha gustado la dinámica del curso, el enfoque del mismo y la claridad del profesor Alberto para explicar los contenidos y resolver las dudas. Esperó hacer un nuevo curso pronto.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Sindy Piñeros
+            - text: –
+            - time: 1 diciembre, 2018
+          - paragraph: He trabajado varios años en Hidrogeología, enfocado principalmente en trabajo de recopilación de datos, sin embargo, no había tenido la oportunidad de utilizar herramientas, que el curso me brindó, con ejercicios prácticos de fácil aplicación. Para los que tengan la oportunidad de realizar este curso, les recomiendo explotar al máximo los conocimientos del tutor, que ha demostrado tener gran experiencia y correcto manejo en el tema.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Carmen Flores
+            - text: –
+            - time: 2 diciembre, 2018
+          - paragraph: El temario del curso me ha parecido interesante y está bien estructurado. He adquirido nuevos conocimientos, repasado otros que había estudiado anteriormente y he podido tener un primer contacto con programas que se usan en este campo (una de las principales razones por las que elegí este curso). Además, la atención por parte del profesor es muy buena, se nota que Alberto tiene mucha experiencia.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Claudia Yaneth Vargas Jerez
+            - text: –
+            - time: 1 mayo, 2019
+          - paragraph: El contenido del curso es muy bueno, permite crear una amplia visualización de la Hidrogeología. Toca todos los temas desde lo mas básico hasta el uso de software. Me sirvió mucho para complementar mis conocimientos. Estoy muy contenta y seguiré haciendo los cursos que me ayuden a complementar mis conocimientos y me aporte en mi formación como profesional
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Leonardo Carreño
+            - text: –
+            - time: 10 mayo, 2019
+          - paragraph: El curso supero mi expectativas, en el contexto de un curso online y por un costo accesible, esperaba algo más sencillo, pero resulto bastante completo en contenidos, con aplicación en software, buena comunicación en el foro y videoclases online, que a su vez están disponibles aunque no puedes verlas en directo. Agradecido de Ingeoexpert.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Santiago Ammar
+            - text: –
+            - time: 23 mayo, 2019
+          - paragraph: La organización y la temática que se trata en este curso son de gran calidad. Cumplió todas mis expectativas y las superó al ver conceptos como protección de acuíferos, modelamiento y mapas piezométricos y manejo de software de aguas subterráneas.
+        - listitem:
+          - img "Valorado en 4 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "4"
+            - text: de 5
+          - paragraph:
+            - strong: Christine Mongard
+            - text: –
+            - time: 25 octubre, 2019
+          - paragraph: El curso me entregó de manera ordenada y enfocada los conocimientos básicos para abordar un estudio hidrogeológico y las herramientas técnicas para desarrollarlo. Lo recomiendo.
+        - listitem:
+          - paragraph:
+            - strong: EFRAIN ANAHUI M
+            - text: –
+            - time: 29 enero, 2020
+          - paragraph: MAGNIFICO CURSO.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Juan Carlos Pechuan
+            - text: –
+            - time: 20 julio, 2020
+          - paragraph: Excelente curso. Muy buena organización de las clases y calidad del material.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Luis Eduardo Moreno Torres
+            - text: –
+            - time: 26 diciembre, 2020
+          - paragraph: Excelente…muy bien por el docente
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Oscar Tejada
+            - text: –
+            - time: 28 diciembre, 2020
+          - paragraph: "Este curso me ha permitido saber todas las aplicaciones prácticas que tiene la hidrogeología. Ha sido muy útil para aplicarlo en el área que trabajo: el medio ambiente."
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Jose Hector Muñoz Leiva
+            - text: –
+            - time: 13 enero, 2021
+          - paragraph: EL curso es lo que se expone con la calidad necesaria para la aplicacion de los conocimientos del tema, las herramientas para poder obtener resultados de decision y la amplia disponibilidad del maestro en atencion a las preguntas y guia en criterios. Curso de calidad dirigido por profesionales para profesionales. Gracias
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: DEYVIS RUBÉN QUIRITA MOLINA
+            - text: –
+            - time: 19 abril, 2021
+          - paragraph: El curso tiene una estructura de vanguardia, con talleres prácticos aplicados a los softwares hidrogeológicos.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Facundo Rodriguez
+            - text: –
+            - time: 29 abril, 2021
+          - paragraph: “El curso es excelente me encanto, dinámico, y con contenidos interesante. Tanto el docente como la plataforma se entienden perfectamente, es un placer realizar un corso de estas características y este contenido. Estoy a la espera de realizar mas cursos de este estilo”
+        - listitem:
+          - img "Valorado en 4 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "4"
+            - text: de 5
+          - paragraph:
+            - strong: David Sorrentino
+            - text: –
+            - time: 23 julio, 2021
+          - paragraph: Es un curso muy practico de iniciación a la Hidrogeología. Conceptos muy claros y útiles para poder aplicarlos. El profesor ha demostrado gran experiencia y capacidad de transmitir.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Daniel Gutiérrez Huanca
+            - text: –
+            - time: 23 julio, 2021
+          - paragraph: Un curso excelente, abarca un gran numero de herramientas que necesita la Hidrogeología en la actualidad, tales como el uso de diversos softwares tales como el Aquifertest donde se pudo aprender como calcular los parametros hidraulicos y de esta forma simular campos de pozos para ver cuales interfieren entre si. Además de la muy buena disposición del tutor en ayudar mediante cualquier duda o interrogante durante el trabajo. Recomiendo 100%.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Camilo Haro Barroso
+            - text: –
+            - time: 23 julio, 2021
+          - paragraph: Excelente curso, con contenidos actualizados y bien definidos. Felicitaciones.
+        - listitem:
+          - img "Valorado en 4 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "4"
+            - text: de 5
+          - paragraph:
+            - strong: Sebastián Mauricio Saavedra Serra
+            - text: –
+            - time: 23 julio, 2021
+          - paragraph: “El curso esta muy bien organizado, y permite el avance según la disponibilidad horaria, que tenga uno. El profesor siempre esta dispuesto a resolver dudas, se nota el manejo y experiencia que tiene referente a la hidrogeología.”
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Mauricio Ares
+            - text: –
+            - time: 1 diciembre, 2021
+          - paragraph: Es mi primer curso realizado, y me pareció muy interesante, y sobre todo practico. El docente la verdad que excelente en todo sentido siempre respondió a mis dudas. lo recomiendo !!
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Joana Aldekoa Martinez
+            - text: –
+            - time: 2 diciembre, 2021
+          - paragraph: Las videoconferencias impartidas por Alberto son muy didácticas y provechosas. Valoro muy positivamente que el tutor comparta su amplia experiencia en la materia con los alumnos.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Alejandro Segura
+            - text: –
+            - time: 7 abril, 2022
+          - paragraph: Estoy gratamente sorprendido por el curso de Hidrogeología Aplicada, pude aprender y aplicar conceptos que gracias a la explicación y a los casos expuestos por el docente, ha quedado sumamente claro, hace mucho tiempo no hacía un curso que me incentivara a esforzarme para terminarlo de buena forma.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Mónica García
+            - text: –
+            - time: 9 abril, 2022
+          - paragraph: Gratamente satisfecha con los conocimientos adquiridos gracias a este curso. Contenido perfectamente entendible desde conceptos básicos a una mayor dificultad. Muy buena atención por parte del profesor Alberto, se notan sus grandes conocimientos y se encarga de poner a nuestra disposición un montón de material de gran uso.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Yetsybeth Acosta
+            - text: –
+            - time: 10 abril, 2022
+          - paragraph: Gracias por la grata experiencia, por los conocimientos brindados y por el apoyo recibido durante todo el curso.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Bárbara Alfaro
+            - text: –
+            - time: 21 julio, 2022
+          - paragraph: Me pareció muy buena la modalidad del curso, en como se iban evaluando cada uno de los módulos. El uso de software fue muy completo al igual que los trabajos asociados a ellos.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Javier Zambrana
+            - text: –
+            - time: 26 agosto, 2022
+          - paragraph: Estimados Ingeoexpert, quiero felicitarlos por un gran curso, el cual será de gran ayuda en las labores futuras en nuestra empresa, los conocimientos adquiridos toman en mi persona mucho más confianza para determinar el funcionamiento y comportamiento de un acuífero, estoy realmente satisfecho por lo aprendido en los módulos de ejercicios del curso, también en los programas Surfer y Aquifer que desde hoy utilizare para desarrollar una buena presentación y entrega precisa a nuestros clientes.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: ROMMEL ITALO CHACON SOPLIN
+            - text: –
+            - time: 30 noviembre, 2022
+          - paragraph: El curso es muy didáctico y lo mejor es que cada alumno puede manejar sus tiempos para desarrollar los temas así como los ejercicios. Ojalá se puedan abrir más cursos sobre mas temas de geología y geofísica. Muy recomendables.
+        - listitem:
+          - img "Valorado en 4 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "4"
+            - text: de 5
+          - paragraph:
+            - strong: Juan Camilo Castro Burgos
+            - text: –
+            - time: 9 diciembre, 2022
+          - paragraph: Buen curso con interesante contenido, tiene buenos video tutoriales.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: SERGIO SUÁREZ CONTRERAS
+            - text: –
+            - time: 27 marzo, 2023
+          - paragraph: Es un curso muy interesante y he aprendido bastante sobre hidrogeología, reforzando los pocos conocimientos ya adquiridos. Debido a mi formación (biólogo) es un tema necesario para el estudio de la contaminación. Me pareció Excelente. De hecho ya estoy inscrito al curso de Modflow.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Bernnie Gamaliel Castillo Moeschler
+            - text: –
+            - time: 29 marzo, 2023
+          - paragraph: Los contenidos del curso está bien estructurada y ordenado, así como la parte práctica o talleres, por lo demás excelente para aplicar los conocimientos y la asesoría del Profesor Alberto fue excelente.
+        - listitem:
+          - img "Valorado en 4 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "4"
+            - text: de 5
+          - paragraph:
+            - strong: Roberto Espinoza Castillo
+            - text: –
+            - time: 3 agosto, 2023
+          - paragraph: El contenido del curso fue innovador para afianzar mis conocimientos sobre la hidrogeología, continuaré realizando as cursos relacionado a hidrogeología.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: EVARISTO MARTÍNEZ
+            - text: –
+            - time: 7 agosto, 2023
+          - paragraph: Recomiendo Ampliamente el Curso de Hidrogeología Aplicada Muestra gran Información y Te permite conocer un poco sobre el software disponible para estas tareas Además veo Que Existen cursos Adicionales Que permiten Avanzar el tema gcs.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Ricardo Sánchez Pérez
+            - text: –
+            - time: 22 noviembre, 2023
+          - paragraph: Excelente curso para el entendimiento de la hidrogeología.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Hernán Rodrigo Vidal Norando
+            - text: –
+            - time: 1 abril, 2024
+          - paragraph: Gracias Alberto por la dedicación y compromiso. Muy bien estructurado el curso con los punta pies iniciales como para seguir profundizando. ¡¡Muy buena la disponibilidad y conocimiento del docente!!.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: CARLOS LÁZARO NIETO
+            - text: –
+            - time: 2 abril, 2024
+          - paragraph: Es un curso aplicado y práctico, con un docente muy bueno, realmente lo recomiendo.
+        - listitem:
+          - img "Valorado en 4 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "4"
+            - text: de 5
+          - paragraph:
+            - strong: José Ricardo Murgas Zuleta
+            - text: –
+            - time: 3 abril, 2024
+          - paragraph: La estructura, organización y calidad del curso me ha sorprendido inmensamente. Calidad en los profesores y en el material de estudio. Muy recomendada la orientación acá brindada.
+        - listitem:
+          - img "Valorado en 4 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "4"
+            - text: de 5
+          - paragraph:
+            - strong: Aníbal José Furtado Artigalás
+            - text: –
+            - time: 4 abril, 2024
+          - paragraph: Desde mi punto de vista es un curso básico y sintético que nos introduce por primera vez a las principales problemáticas asociadas a los acuíferos y su funcionamiento, además de darnos un primer acercamiento a los softwares esenciales para el análisis de los mismos. Me ha permitido aplicar a corto plazo estos softwares en mi campo laboral.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Berenice Andrea Neri Moreno
+            - text: –
+            - time: 10 abril, 2025
+          - paragraph: Excelente curso, dinámico y con muy buena atención por parte del profesor; atiende tus dudas y comenta desde diferentes puntos de vista. Considero que es un curso muy útil para el desarrollo de la materia y ayuda mucho en el entendimiento de la misma.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Lidio Pérez Aguilar
+            - text: –
+            - time: 4 agosto, 2025
+          - paragraph: El “Curso de Hidrogeología aplicada” me aporto aún más conocimientos en Hidrogeología que los iniciales que ya tenía, pues es un curso que explica, desde los conceptos básicos, el modelo conceptual e Hidrogeoquímica básica, hasta la evaluación de recursos hídricos y la protección y contaminación de acuíferos. Teniendo en cuenta lo anterior, les recomiendo tomar este curso, tanto a aquellos que inicien en el área de Hidrogeología, como para los ya adentrados en dicha área.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Iron Rosendo Huayhua Chávez
+            - text: –
+            - time: 6 agosto, 2025
+          - paragraph: La calidad como explicaba el profesor era excelente. Además, es muy bueno el enfoque práctico que le ponen en los diferentes temas. Los softwares son buenos y aplicables para la industria moderna de la Hidrogeología. Estaré llevando otros cursos relacionados a la Hidrogeología muy pronto. Curso de Hidrogeología Aplicada
+        - listitem:
+          - img "Valorado en 4 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "4"
+            - text: de 5
+          - paragraph:
+            - strong: Gabriel Palma Ojeda
+            - text: –
+            - time: 11 diciembre, 2025
+          - paragraph: Un curso relativamente sencillo y bueno, para quienes deseen reforzar la Hidrogeología.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: FLUQUER PEÑA LAUREANO
+            - text: –
+            - time: 10 mayo, 2026
+          - paragraph: El curso me ha gustado mucho. Además, el enfoque práctico del mismo me va servir para mi trabajo, poniendo en práctica los conocimientos adquiridos. Seguiré haciendo más cursos en este centro, sin duda, y muchos cursos de la plataforma.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Marcos Gustavo Gallo Boo
+            - text: –
+            - time: 12 mayo, 2026
+          - paragraph: Curso altamente recomendable para todo aquel que desee tener unos sólidos conocimientos básicos de Hidrogeología.
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Annais Marquez Fernandez
+            - text: –
+            - time: 4 septiembre, 2026
+          - paragraph: Excelente curso
+        - listitem:
+          - img "Valorado en 5 de 5":
+            - text: SSSSS SSSSS Valorado en
+            - strong: "5"
+            - text: de 5
+          - paragraph:
+            - strong: Victor Hugo Alarcon Cervantes
+            - text: –
+            - time: 7 septiembre, 2026
+          - paragraph: Es un buen curso para personas que ya tenemos experiencia en hidrogeología y queremos pulir conocimientos acerca de hidrodinámica e hidrogeoquímica de acuíferos
+      - paragraph: Tu dirección de correo electrónico no será publicada. Los campos obligatorios están marcados con *
+      - text: Tu puntuación
+      - paragraph:
+        - group "Tu puntuación":
+          - radio "S 1 de 5 estrellas"
+          - radio "S 2 de 5 estrellas"
+          - radio "S 3 de 5 estrellas"
+          - radio "S 4 de 5 estrellas"
+          - radio "S 5 de 5 estrellas"
+      - paragraph:
+        - text: Tu valoración *
+        - textbox "Tu valoración *"
+      - paragraph:
+        - text: Nombre *
+        - textbox "Nombre *"
+      - paragraph:
+        - text: Correo electrónico *
+        - textbox "Correo electrónico *"
+      - paragraph:
+        - checkbox "Guarda mi nombre, correo electrónico y web en este navegador para la próxima vez que comente."
+        - text: Guarda mi nombre, correo electrónico y web en este navegador para la próxima vez que comente.
+      - paragraph:
+        - button "Enviar"
+      - heading "Solicitar más información" [level=3]
+      - paragraph
+      - paragraph:
+        - text: Nombre *
+        - textbox
+      - paragraph:
+        - text: Apellido *
+        - textbox
+      - paragraph:
+        - text: Email *
+        - textbox
+      - paragraph:
+        - checkbox
+        - text: He leído y acepto la
+        - link "política de privacidad.":
+          - /url: https://ingeoexpert.com/politica-de-privacidad/
+      - paragraph:
+        - button "Obtén más información sobre el curso"
+      - heading "Bonificación para tu empresa:" [level=3]
+      - form:
+        - paragraph:
+          - text: Si eres trabajador en activo en España, este curso te puede salir gratuito a través de las bonificaciones de la
+          - link "Fundación Tripartita":
+            - /url: https://www.fundae.es/Pages/default.aspx
+          - text: .
+        - img "Fundación Tripartita"
+      - heading "Completa este curso y obtén tu certificado digital basado en la tecnología Blockchain" [level=3]
+      - form:
+        - paragraph:
+          - strong: Curso de Hidrogeología aplicada
+        - img "Certificate based on Blockchain"
+      - paragraph:
+        - link "Haz click aquí para ver un ejemplo":
+          - /url: https://www.credential.net/9cq5b5so
+      - paragraph: La tecnología Blockchain permite que el certificado sea único e incorruptible, lo cual posibilita a las empresas verificar su autenticidad
+      - heading "También te recomendamos…" [level=2]
+      - list:
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso de Modelización de flujo y transporte de contaminantes en aguas subterráneas con Visual Modflow":
+                - /url: https://ingeoexpert.com/cursos/curso-de-modelizacion-de-flujo-y-transporte-de-contaminantes-en-aguas-subterraneas-con-visual-modflow/
+                - img "Curso de Modelización de flujo y transporte de contaminantes en aguas subterráneas con Visual Modflow"
+            - listitem:
+              - heading "Curso de Modelización de flujo y transporte de contaminantes en aguas subterráneas con Visual Modflow" [level=2]:
+                - link "Curso de Modelización de flujo y transporte de contaminantes en aguas subterráneas con Visual Modflow":
+                  - /url: https://ingeoexpert.com/cursos/curso-de-modelizacion-de-flujo-y-transporte-de-contaminantes-en-aguas-subterraneas-con-visual-modflow/
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso de Hidrogeología aplicada":
+                - /url: https://ingeoexpert.com/cursos/curso-de-hidrogeologia-aplicada/
+                - img "Curso de Hidrogeología aplicada"
+            - listitem:
+              - heading "Curso de Hidrogeología aplicada" [level=2]:
+                - link "Curso de Hidrogeología aplicada":
+                  - /url: https://ingeoexpert.com/cursos/curso-de-hidrogeologia-aplicada/
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso de Simulación numérica de aguas subterráneas con Visual MODFLOW":
+                - /url: https://ingeoexpert.com/cursos/curso-de-simulacion-numerica-de-aguas-subterraneas-con-visual-modflow/
+                - img "Curso de Simulación numérica de aguas subterráneas con Visual MODFLOW"
+            - listitem:
+              - heading "Curso de Simulación numérica de aguas subterráneas con Visual MODFLOW" [level=2]:
+                - link "Curso de Simulación numérica de aguas subterráneas con Visual MODFLOW":
+                  - /url: https://ingeoexpert.com/cursos/curso-de-simulacion-numerica-de-aguas-subterraneas-con-visual-modflow/
+        - listitem:
+          - list:
+            - listitem:
+              - link "Curso de hidrogeología de campo":
+                - /url: https://ingeoexpert.com/cursos/curso-de-hidrogeologia-de-campo/
+                - img "Curso de hidrogeología de campo"
+            - listitem:
+              - heading "Curso de hidrogeología de campo" [level=2]:
+                - link "Curso de hidrogeología de campo":
+                  - /url: https://ingeoexpert.com/cursos/curso-de-hidrogeologia-de-campo/
+  - contentinfo:
+    - heading "Ingeoexpert" [level=4]
+    - paragraph:
+      - text: "Calle de Velázquez, 157 28002. Madrid (España) Tlf:"
+      - link "(+34) 91 524 57 85":
+        - /url: tel:+34915245785
+      - text: "Email: info@ingeoexpert.com"
+    - heading "TEMÁTICA DE CURSOS" [level=4]
+    - list:
+      - listitem:
+        - link "Ingeniería Civil":
+          - /url: https://ingeoexpert.com/cursos-online/ingenieriacivil/
+      - listitem:
+        - link "Arquitectura":
+          - /url: https://ingeoexpert.com/cursos-online/arquitectura/
+      - listitem:
+        - link "Geología":
+          - /url: https://ingeoexpert.com/cursos-online/geologia/
+      - listitem:
+        - link "Minería":
+          - /url: https://ingeoexpert.com/cursos-online/mineria/
+      - listitem:
+        - link "Medioambiente":
+          - /url: https://ingeoexpert.com/cursos-online/medioambiente/
+      - listitem:
+        - link "Software":
+          - /url: https://ingeoexpert.com/cursos-online/software/
+    - heading "EN NUESTRO BLOG" [level=4]
+    - list:
+      - listitem:
+        - 'link "Piedras preciosas: Qué determina su valor y dureza"':
+          - /url: https://ingeoexpert.com/2026/09/30/piedras-preciosas-que-determina-su-valor-y-dureza/
+          - 'img "Piedras preciosas: Qué determina su valor y dureza"'
+        - 'link "Piedras preciosas: Qué determina su valor y dureza"':
+          - /url: https://ingeoexpert.com/2026/09/30/piedras-preciosas-que-determina-su-valor-y-dureza/
+        - text: 30 septiembre, 2026
+      - listitem:
+        - 'link "Túneles TBM: Cómo funcionan las tuneladoras gigantes (las “topos”)"':
+          - /url: https://ingeoexpert.com/2026/09/30/tuneles-tbm-como-funcionan-las-tuneladoras-gigantes-las-topos/
+          - 'img "Túneles TBM: Cómo funcionan las tuneladoras gigantes (las “topos”)"'
+        - 'link "Túneles TBM: Cómo funcionan las tuneladoras gigantes (las “topos”)"':
+          - /url: https://ingeoexpert.com/2026/09/30/tuneles-tbm-como-funcionan-las-tuneladoras-gigantes-las-topos/
+        - text: 30 septiembre, 2026
+      - listitem:
+        - link "Diplodocus en Teruel, el fósil que reescribe el mapa del Jurásico":
+          - /url: https://ingeoexpert.com/2026/09/30/diplodocus-en-teruel-el-fosil-que-reescribe-el-mapa-del-jurasico/
+          - img "Diplodocus en Teruel, el fósil que reescribe el mapa del Jurásico"
+        - link "Diplodocus en Teruel, el fósil que reescribe el mapa del Jurásico":
+          - /url: https://ingeoexpert.com/2026/09/30/diplodocus-en-teruel-el-fosil-que-reescribe-el-mapa-del-jurasico/
+        - text: 30 septiembre, 2026
+    - heading "SÍGUENOS EN" [level=4]
+    - list:
+      - listitem:
+        - link "LinkedIn":
+          - /url: https://www.linkedin.com/company/ingeoexpert
+        - text: Se abre en una nueva pestaña
+      - listitem:
+        - link "Facebook":
+          - /url: https://www.facebook.com/ingeoexpert
+        - text: Se abre en una nueva pestaña
+      - listitem:
+        - link "X":
+          - /url: https://twitter.com/Ingeoexpert
+        - text: Se abre en una nueva pestaña
+      - listitem:
+        - link "Instagram":
+          - /url: https://www.instagram.com/Ingeoexpert/
+        - text: Se abre en una nueva pestaña
+      - listitem:
+        - link "Youtube":
+          - /url: https://www.youtube.com/@ingeoexpert2870
+        - text: Se abre en una nueva pestaña
+    - paragraph: "Ingeoexpert es una institución Elearning acreditada por:"
+    - paragraph
+    - list:
+      - listitem:
+        - link "Términos y condiciones":
+          - /url: https://ingeoexpert.com/terminos-y-condiciones/
+        - text: "|"
+      - listitem:
+        - link "Política de privacidad":
+          - /url: https://ingeoexpert.com/politica-de-privacidad/
+        - text: "|"
+      - listitem:
+        - link "Política de cookies":
+          - /url: /politica-de-privacidad/#cookies
+        - text: "|"
+      - listitem:
+        - link "Preguntas frecuentes":
+          - /url: /nosotros/#faq
+    - contentinfo: © Copyright - Ingeoexpert - Formación y cursos especializados en geología, minería e ingeniería civil.
+  - complementary "Banner de cookies RGPD":
+    - paragraph: Utilizamos cookies para ofrecerte la mejor experiencia en nuestra web.
+    - paragraph:
+      - text: Puedes aprender más sobre qué cookies utilizamos o desactivarlas en los
+      - button "ajustes"
+      - text: .
+    - button "Aceptar"
+    - button "Rechazar"
+    - button "Ajustes"
+  - status
+  - iframe

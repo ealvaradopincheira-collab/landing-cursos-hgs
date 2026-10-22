@@ -1,0 +1,238 @@
+- document:
+  - main:
+    - link "Google Antigravity":
+      - /url: /
+      - img
+    - navigation:
+      - button "Productos"
+      - button "Casos de uso"
+      - link "Precios":
+        - /url: /pricing
+      - link "Empresas":
+        - /url: /use-cases/enterprise
+      - button "Recursos"
+    - link "Abrir Control Remoto":
+      - /url: https://antigravity.google.com
+      - text: 🚀
+    - link "Descargar":
+      - /url: /download
+    - combobox "Select language":
+      - combobox "Select language":
+        - option "English (United States)"
+        - option "Bahasa Indonesia (Indonesia)"
+        - option "Deutsch (Deutschland)"
+        - option "English (Canada)"
+        - option "English (United Kingdom)"
+        - option "Español (España)" [selected]
+        - option "Español (México)"
+        - option "Français (France)"
+        - option "Italiano (Italia)"
+        - option "Polski (Polska)"
+        - option "Português (Brasil)"
+        - option "हिन्दी (भारत)"
+        - option "ไทย (ประเทศไทย)"
+        - option "日本語 (日本)"
+        - option "简体中文 (中国)"
+        - option "繁體中文 (台灣)"
+        - option "한국어 (대한민국)"
+    - region "New announcement":
+      - link "Nuevo Gemini 4 Argon disponible para Google AI Pro y Ultra en Google Antigravity Más información":
+        - /url: /blog/gemini-4-argon-in-google-antigravity
+      - button "Dismiss New announcement"
+    - main:
+      - img
+      - heading "Impulsa tus proyectos con la plataforma de agentes de última generación" [level=1]
+      - link "Descargar":
+        - /url: /download
+      - button "Reproducir introducción"
+      - list:
+        - listitem
+        - listitem
+        - listitem
+        - listitem
+        - listitem
+        - listitem
+        - listitem
+        - listitem
+        - listitem
+        - listitem
+        - listitem
+        - listitem
+        - listitem
+        - listitem
+        - listitem
+        - listitem
+        - listitem
+        - listitem
+        - listitem
+        - listitem
+        - listitem
+        - listitem
+      - text: Google Antigravity es nuestra plataforma de desarrollo basada en agentes, que permite a cualquier persona construir en la nueva era agéntica.
+      - link "Antigravity App":
+        - /url: /product/antigravity-2
+      - paragraph: Tu centro de mando para administrar múltiples agentes locales en paralelo. Agrupa conversaciones en proyectos, opera en múltiples espacios de trabajo y automatiza tareas rutinarias con mensajes programados.
+      - img "Tu centro de mando para administrar múltiples agentes locales en paralelo. Agrupa conversaciones en proyectos, opera en múltiples espacios de trabajo y automatiza tareas rutinarias con mensajes programados."
+      - link "Antigravity CLI":
+        - /url: /product/antigravity-cli
+      - paragraph: El entorno ligero, rápido y centrado en la terminal para trabajar con agentes de Antigravity. Ejecuta agentes de programación autónomos, ejecuta comandos de shell directamente y administra subagentes en segundo plano desde tu teclado.
+      - img "El entorno ligero, rápido y centrado en la terminal para trabajar con agentes de Antigravity. Ejecuta agentes de programación autónomos, ejecuta comandos de shell directamente y administra subagentes en segundo plano desde tu teclado."
+      - link "Antigravity IDE":
+        - /url: /product/antigravity-ide
+      - paragraph: El IDE basado en agentes con todas las funciones. Completo con el administrador de agentes, artefactos y una comprensión profunda de tu base de código.
+      - link "Antigravity SDK":
+        - /url: /product/antigravity-sdk
+      - paragraph: Crea prototipos de agentes personalizados aprovechando el entorno de Antigravity con un mínimo de código. Scripts sencillos de Python para iterar en aplicaciones de agentes, automatizar tareas de ingeniería de software y ejecutar evaluaciones sobre el entorno de agentes de Antigravity.
+      - link "Explorar producto":
+        - /url: /product
+      - img "Crea prototipos de agentes personalizados aprovechando el entorno de Antigravity con un mínimo de código. Scripts sencillos de Python para iterar en aplicaciones de agentes, automatizar tareas de ingeniería de software y ejecutar evaluaciones sobre el entorno de agentes de Antigravity."
+      - heading "Creado para desarrolladores en la era centrada en agentes" [level=2]
+      - paragraph: Google Antigravity está diseñado para brindar confianza al usuario, ya sea un desarrollador profesional que trabaja en una gran base de código empresarial, un fan de la programación en su tiempo libre o cualquier perfil intermedio.
+      - 'button "Watch case: Full stack developer"':
+        - img "Desarrollador full stack"
+        - text: Desarrollador full stack Ver vídeo
+      - strong: Desarrollador full stack
+      - paragraph: Construye aplicaciones listas para producción con confianza mediante artefactos cuidadosamente diseñados y pruebas de verificación exhaustivas.
+      - link "Ver caso":
+        - /url: /use-cases/fullstack
+      - button "Diapositiva anterior" [disabled]
+      - button "Siguiente diapositiva"
+      - paragraph: Disponible sin coste
+      - paragraph: Para desarrolladores
+      - paragraph: Alcanza nuevos límites
+      - link "Descargar":
+        - /url: /download
+      - paragraph: ¡Ya disponible!
+      - paragraph: Para organizaciones
+      - paragraph: Lleva a todo tu equipo al siguiente nivel
+      - link "Leer más":
+        - /url: /docs/enterprise
+      - text: Últimas publicaciones del blog
+      - link "Ver blog":
+        - /url: /blog
+      - link "Gemini 4 Argon en Google Antigravity Gemini 4 Argon en Google Antigravity 13 oct 2026 Modelo Leer blog":
+        - /url: /blog/gemini-4-argon-in-google-antigravity
+        - img "Gemini 4 Argon en Google Antigravity"
+        - paragraph: Gemini 4 Argon en Google Antigravity
+        - text: 13 oct 2026 Modelo Leer blog
+      - link "Agentes personalizados en los complementos de Google Agentes personalizados en los complementos de Google 28 sept 2026 Producto Leer blog":
+        - /url: /blog/custom-agents-in-google-plugins
+        - img "Agentes personalizados en los complementos de Google"
+        - paragraph: Agentes personalizados en los complementos de Google
+        - text: 28 sept 2026 Producto Leer blog
+      - link "Gemini 3.8 Flash en Google Antigravity Gemini 3.8 Flash en Google Antigravity 1 sept 2026 Modelo Leer blog":
+        - /url: /blog/gemini-3-8-flash-in-google-antigravity
+        - img "Gemini 3.8 Flash en Google Antigravity"
+        - paragraph: Gemini 3.8 Flash en Google Antigravity
+        - text: 1 sept 2026 Modelo Leer blog
+      - 'link "Teamwork: cuando la IA se convierte en socia de investigación Teamwork: cuando la IA se convierte en socia de investigación 27 ago 2026 Investigación Producto Leer blog"':
+        - /url: /blog/teamwork-when-ai-becomes-a-research-partner
+        - 'img "Teamwork: cuando la IA se convierte en socia de investigación"'
+        - paragraph: "Teamwork: cuando la IA se convierte en socia de investigación"
+        - text: 27 ago 2026 Investigación Producto Leer blog
+      - link "Visualización interactiva con la ayuda de Antigravity Visualización interactiva con la ayuda de Antigravity 26 ago 2026 Producto Leer blog":
+        - /url: /blog/visualizing-with-the-help-of-antigravity
+        - img "Visualización interactiva con la ayuda de Antigravity"
+        - paragraph: Visualización interactiva con la ayuda de Antigravity
+        - text: 26 ago 2026 Producto Leer blog
+      - link "Una mejor experiencia de control de versiones Una mejor experiencia de control de versiones 24 ago 2026 Producto Leer blog":
+        - /url: /blog/vcs-and-terminal
+        - img "Una mejor experiencia de control de versiones"
+        - paragraph: Una mejor experiencia de control de versiones
+        - text: 24 ago 2026 Producto Leer blog
+      - link "Antigravity en cualquier lugar con Control Remoto Antigravity en cualquier lugar con Control Remoto 21 ago 2026 Producto Leer blog":
+        - /url: /blog/remote-control-for-antigravity
+        - img "Antigravity en cualquier lugar con Control Remoto"
+        - paragraph: Antigravity en cualquier lugar con Control Remoto
+        - text: 21 ago 2026 Producto Leer blog
+      - 'link "Antigravity llega a Gemini Enterprise: flujos de trabajo con agentes para cada desarrollador Antigravity llega a Gemini Enterprise: flujos de trabajo con agentes para cada desarrollador 20 ago 2026 Empresas Leer blog"':
+        - /url: /blog/antigravity-enterprise
+        - 'img "Antigravity llega a Gemini Enterprise: flujos de trabajo con agentes para cada desarrollador"'
+        - paragraph: "Antigravity llega a Gemini Enterprise: flujos de trabajo con agentes para cada desarrollador"
+        - text: 20 ago 2026 Empresas Leer blog
+      - link "Presentamos las extensiones de IDE Presentamos las extensiones de IDE 20 ago 2026 Producto Leer blog":
+        - /url: /blog/antigravity-ide-extensions
+        - img "Presentamos las extensiones de IDE"
+        - paragraph: Presentamos las extensiones de IDE
+        - text: 20 ago 2026 Producto Leer blog
+      - button "Diapositiva anterior" [disabled]
+      - button "Siguiente diapositiva"
+      - complementary "Suscripción al boletín de Google Antigravity":
+        - heading "Mantente al día con Google Antigravity" [level=2]
+        - paragraph: Recibe las últimas actualizaciones del producto, lanzamientos y nuevas funciones.
+        - group "Entornos del producto":
+          - text: Entornos del producto
+          - group "Temas de actualización del boletín":
+            - checkbox "Todas las actualizaciones" [checked]
+            - text: Todas las actualizaciones
+            - checkbox "Antigravity App"
+            - text: Antigravity App
+            - checkbox "Antigravity CLI"
+            - text: Antigravity CLI
+            - checkbox "Extensiones de IDE"
+            - text: Extensiones de IDE
+            - checkbox "Antigravity SDK"
+            - text: Antigravity SDK
+        - text: Dirección de correo electrónico
+        - textbox "Dirección de correo electrónico":
+          - /placeholder: Introduce tu dirección de correo electrónico
+        - button "Suscribirse"
+        - checkbox "I accept Google's Términos and Política de privacidad. Unsubscribe anytime."
+        - text: I accept Google's
+        - link "Términos":
+          - /url: https://policies.google.com/terms
+        - text: and
+        - link "Política de privacidad":
+          - /url: https://policies.google.com/privacy?hl=en-US
+        - text: . Unsubscribe anytime.
+      - text: Descarga Google Antigravity para Windows
+      - link "Descargar para x64":
+        - /url: /download
+      - link "Descargar para ARM64":
+        - /url: /download
+    - paragraph: Impulsa tus proyectos
+    - paragraph: Producto
+    - link "Producto":
+      - /url: /product
+    - link "Descargar":
+      - /url: /download
+    - link "Antigravity App":
+      - /url: /product/antigravity-2
+    - link "Extensiones de Antigravity":
+      - /url: /docs/ide/extensions
+    - link "Antigravity CLI":
+      - /url: /product/antigravity-cli
+    - link "Antigravity IDE":
+      - /url: /product/antigravity-ide
+    - link "Antigravity SDK":
+      - /url: /product/antigravity-sdk
+    - paragraph: Recursos
+    - link "Documentación":
+      - /url: /docs/overview
+    - link "Registro de cambios":
+      - /url: /docs/changelog
+    - link "Lanzamientos":
+      - /url: /releases
+    - link "Blog oficial":
+      - /url: /blog
+    - link "Boletín":
+      - /url: /newsletter
+    - link "Precios":
+      - /url: /pricing
+    - link "Casos de uso":
+      - /url: /use-cases
+    - link "Prensa":
+      - /url: /press
+    - img
+    - link "Google":
+      - /url: https://www.google.com
+      - img
+    - navigation:
+      - link "Acerca de Google":
+        - /url: https://about.google/
+      - link "Productos de Google":
+        - /url: https://about.google/products/
+      - link "Privacidad":
+        - /url: https://policies.google.com/privacy?hl=en-US
+      - link "Términos":
+        - /url: /terms

@@ -1,0 +1,56 @@
+---
+import Legal from '../layouts/Legal.astro';
+import { SITIO } from '../config/sitio';
+import { mostrar } from '../lib/formato';
+---
+<Legal titulo="Términos de inscripción" actualizado="22 de octubre de 2026">
+  <h2>1. Inscripción</h2>
+  <p>
+    La inscripción se compone de dos pasos: el registro de los datos del participante en este sitio y el pago
+    del curso mediante Mercado Pago. El cupo queda confirmado cuando {SITIO.nombre} verifica el pago y envía al
+    correo registrado la confirmación y el enlace de Google Meet.
+  </p>
+
+  <h2>2. Precio y medio de pago</h2>
+  <p>
+    Los precios se expresan en pesos chilenos (CLP) y corresponden a un precio único por participante. El pago se
+    realiza en la plataforma de Mercado Pago; {SITIO.nombre} no recibe ni almacena datos de tarjetas de pago.
+  </p>
+
+  <h2>3. Convenios</h2>
+  <p>
+    Para grupos de {SITIO.convenioMinimoAlumnos} o más participantes de una misma empresa o institución, las
+    condiciones de inscripción y pago se acuerdan por escrito mediante la solicitud de convenio.
+  </p>
+
+  <h2>4. Modalidad</h2>
+  <p>
+    Las clases se dictan en vivo por Google Meet en las fechas y horarios publicados en la ficha de cada curso.
+    El participante es responsable de contar con conexión a internet y el software indicado en la ficha.
+  </p>
+  <p class="a-definir">A definir: disponibilidad de grabaciones de las clases y plazo de acceso.</p>
+
+  <h2>5. Cambios y cancelación por parte de {SITIO.nombre}</h2>
+  <p>
+    Si {SITIO.nombre} reprograma o cancela un curso, informará a los inscritos al correo registrado y ofrecerá la
+    devolución íntegra del monto pagado o la inscripción en la nueva fecha, a elección del participante.
+  </p>
+
+  <h2>6. Retracto y devoluciones solicitadas por el participante</h2>
+  <p class="a-definir">
+    A definir por {SITIO.nombre} con asesoría legal: plazo y condiciones de retracto y devolución, considerando la
+    Ley N.º 19.496 sobre protección de los derechos de los consumidores para servicios contratados a distancia.
+  </p>
+
+  <h2>7. Certificado</h2>
+  <p class="a-definir">A definir: si se emite certificado y con qué requisito de asistencia o evaluación.</p>
+
+  <h2>8. Material del curso</h2>
+  <p>
+    El material entregado es para uso personal del participante. No está permitida su redistribución ni la
+    grabación o difusión de las clases sin autorización de {SITIO.nombre}.
+  </p>
+
+  <h2>9. Contacto</h2>
+  <p>Consultas sobre estos términos: <span class="mono">{mostrar(SITIO.correo)}</span>.</p>
+</Legal>

@@ -1,0 +1,143 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import { cohorteAbierta } from '../../../lib/cohortes';
+import { formatoCLP, formatoFecha } from '../../../lib/formato';
+import { SITIO } from '../../../config/sitio';
+import { mostrar } from '../../../lib/formato';
+
+export async function getStaticPaths() {
+  const cursos = await getCollection('cursos');
+  return cursos.map((curso) => ({ params: { slug: curso.id }, props: { curso } }));
+}
+
+const { curso } = Astro.props;
+const d = curso.data;
+const cohorte = cohorteAbierta(d.cohortes);
+const linkListo = d.mpLink !== 'PENDIENTE';
+---
+<Base titulo={`Pago · ${d.titulo}`}>
+  <meta slot="head" name="robots" content="noindex" />
+
+  <div class="contenedor pago-pagina">
+    <p class="paso mono">Paso 2 de 2 · Pago</p>
+    <h1>Ya registramos tus datos</h1>
+    <p class="id" data-id-contenedor hidden>
+      Código de inscripción: <strong class="mono" data-id-inscripcion></strong>
+    </p>
+
+    <dl class="detalle">
+      <div><dt>Curso</dt><dd>{d.titulo}</dd></div>
+      {cohorte && <div><dt>Inicio</dt><dd>{formatoFecha(cohorte.inicio)}</dd></div>}
+      <div><dt>Modalidad</dt><dd>En vivo por Google Meet</dd></div>
+      <div><dt>Total</dt><dd class="mono total">{formatoCLP(d.precioCLP)} CLP</dd></div>
+    </dl>
+
+    {linkListo
+      ? <a class="boton boton--primario pagar" href={d.mpLink}>Pagar con Mercado Pago</a>
+      : <p class="pagar pagar--pendiente" role="note">Link de pago {mostrar('PENDIENTE').toLowerCase()} (solo visible en borrador).</p>}
+
+    <ol class="pasos">
+      <li>Paga con el <strong>mismo correo</strong> que ingresaste en el paso anterior.</li>
+      <li>Dentro de un día hábil recibirás la confirmación y el enlace de Google Meet en ese correo.</li>
+      <li>Si el pago es rechazado, puedes reintentar desde este mismo botón; tu inscripción se mantiene.</li>
+    </ol>
+
+    <p class="ayuda">¿Problemas con el pago? Escríbenos a <span class="mono">{mostrar(SITIO.correo)}</span> indicando tu código de inscripción.</p>
+  </div>
+</Base>
+
+<style>
+  .pago-pagina {
+    max-width: 640px;
+    padding-block: var(--space-16);
+  }
+
+  .paso {
+    color: var(--brand-accent);
+    font-size: 14px;
+  }
+
+  h1 {
+    margin-top: var(--space-3);
+    font-size: var(--fs-h1);
+  }
+
+  .id {
+    margin-top: var(--space-4);
+    color: var(--text-secondary);
+  }
+
+  .id strong {
+    color: var(--text-primary);
+  }
+
+  .detalle {
+    display: grid;
+    gap: var(--space-3);
+    margin-block: var(--space-8);
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    background: var(--bg-surface);
+  }
+
+  .detalle div {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+
+  .detalle dt {
+    color: var(--text-muted);
+  }
+
+  .detalle dd {
+    margin: 0;
+    font-weight: 500;
+    text-align: right;
+  }
+
+  .total {
+    font-size: 20px;
+  }
+
+  .pagar {
+    width: 100%;
+    min-height: 56px;
+    font-size: 17px;
+  }
+
+  .pagar--pendiente {
+    padding: var(--space-4);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  .pasos {
+    display: grid;
+    gap: var(--space-3);
+    margin-top: var(--space-8);
+    padding-left: var(--space-6);
+    color: var(--text-secondary);
+  }
+
+  .ayuda {
+    margin-top: var(--space-8);
+    color: var(--text-muted);
+    font-size: 15px;
+  }
+</style>
+
+<script>
+  const id = new URLSearchParams(location.search).get('id');
+  if (id && /^HGS-[A-Z0-9]{6}$/.test(id)) {
+    const destino = document.querySelector<HTMLElement>('[data-id-inscripcion]');
+    const contenedor = document.querySelector<HTMLElement>('[data-id-contenedor]');
+    if (destino && contenedor) {
+      destino.textContent = id;
+      contenedor.hidden = false;
+    }
+  }
+</script>

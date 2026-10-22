@@ -1,0 +1,93 @@
+---
+// Formulario Netlify con envío AJAX, honeypot y estados de envío/éxito/error (tech_spec §2).
+// Sin JavaScript el formulario se envía de forma nativa a `accion`.
+interface Props {
+  nombre: 'inscripcion' | 'informacion' | 'convenio';
+  accion: string;
+  etiquetaEnviar: string;
+  /** Si se define, tras un envío exitoso se navega aquí (con ?id=<id de envío> si existe). */
+  redirigir?: string;
+  mensajeExito?: string;
+}
+
+const { nombre, accion, etiquetaEnviar, redirigir, mensajeExito = 'Recibimos tu mensaje. Te responderemos dentro de un día hábil.' } = Astro.props;
+---
+<form
+  class="formulario"
+  name={nombre}
+  method="POST"
+  action={accion}
+  data-netlify="true"
+  netlify-honeypot="campo-trampa"
+  data-formulario
+  data-redirigir={redirigir}
+  novalidate
+>
+  <input type="hidden" name="form-name" value={nombre} />
+  <p class="formulario__trampa" aria-hidden="true">
+    <label>No completar <input name="campo-trampa" tabindex="-1" autocomplete="off" /></label>
+  </p>
+
+  <slot />
+
+  <div class="formulario__acciones">
+    <button class="boton boton--primario" type="submit" data-enviar>{etiquetaEnviar}</button>
+  </div>
+
+  <div class="formulario__estado" role="status" aria-live="polite" data-estado></div>
+  <div class="formulario__error" role="alert" data-error-envio hidden>
+    <p>No pudimos enviar el formulario. Revisa tu conexión; tus datos siguen aquí.</p>
+    <button class="boton boton--secundario" type="submit">Reintentar</button>
+  </div>
+</form>
+<div class="formulario__exito" data-exito hidden tabindex="-1">
+  <p>{mensajeExito}</p>
+</div>
+
+<style>
+  .formulario {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .formulario__trampa {
+    position: absolute;
+    left: -9999px;
+  }
+
+  .formulario__acciones .boton {
+    min-height: 56px;
+    padding-inline: var(--space-8);
+  }
+
+  .formulario__acciones .boton[aria-busy='true'] {
+    opacity: 0.7;
+    cursor: progress;
+  }
+
+  .formulario__estado:empty {
+    display: none;
+  }
+
+  .formulario__error {
+    display: grid;
+    gap: var(--space-3);
+    justify-items: start;
+    padding: var(--space-6);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--brand-accent);
+    color: var(--text-primary);
+  }
+
+  .formulario__exito {
+    padding: var(--space-6);
+    border-radius: var(--radius-md);
+    background: var(--bg-surface);
+    font-weight: 500;
+  }
+</style>
+
+<script>
+  import { activarFormularios } from '../lib/formularios';
+  activarFormularios();
+</script>

@@ -1,0 +1,78 @@
+---
+import { formatoCLP } from '../lib/formato';
+
+interface Props {
+  slug: string;
+  precioCLP: number;
+}
+const { slug, precioCLP } = Astro.props;
+---
+<div class="barra" data-barra-inscripcion data-oculta>
+  <p>
+    <span class="mono barra__precio">{formatoCLP(precioCLP)}</span>
+    <span class="barra__nota">CLP · precio único</span>
+  </p>
+  <a class="boton boton--primario" href={`/inscripcion/${slug}/`}>Inscribirme</a>
+</div>
+
+<style>
+  .barra {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 45;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    min-height: 72px;
+    padding: var(--space-3) var(--gutter) calc(var(--space-3) + env(safe-area-inset-bottom));
+    background: var(--bg-canvas);
+    border-top: 1px solid var(--border-subtle);
+    transform: translateY(0);
+    transition: transform var(--dur-base) var(--ease-out);
+  }
+
+  .barra[data-oculta] {
+    transform: translateY(110%);
+    visibility: hidden;
+  }
+
+  .barra p {
+    display: grid;
+    line-height: 1.2;
+  }
+
+  .barra__precio {
+    font-size: 22px;
+  }
+
+  .barra__nota {
+    color: var(--text-muted);
+    font-size: 12px;
+  }
+
+  @media (min-width: 960px) {
+    .barra {
+      display: none !important;
+    }
+  }
+
+  /* Reserva espacio para que la barra no tape el final de la página */
+  @media (max-width: 959px) {
+    :global(body:has([data-barra-inscripcion])) {
+      padding-bottom: 80px;
+    }
+  }
+</style>
+
+<script>
+  const barra = document.querySelector<HTMLElement>('[data-barra-inscripcion]');
+  const cta = document.querySelector('[data-cta-inscripcion]');
+  if (barra && cta && 'IntersectionObserver' in window) {
+    // Visible mientras el botón «Inscribirme» del hero no está en pantalla (arriba o abajo):
+    // en móvil el precio y el botón quedan a la vista desde la carga (HU-01).
+    new IntersectionObserver(([e]) => {
+      barra.toggleAttribute('data-oculta', e.isIntersecting);
+    }, { threshold: 1 }).observe(cta);
+  }
+</script>

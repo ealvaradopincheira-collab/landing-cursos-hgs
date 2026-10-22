@@ -1,0 +1,97 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  modulos: CollectionEntry<'cursos'>['data']['modulos'];
+}
+const { modulos } = Astro.props;
+---
+<ol class="temario">
+  {modulos.map((m, i) => (
+    <li>
+      <details open={i === 0}>
+        <summary>
+          <span class="temario__num mono">{String(i + 1).padStart(2, '0')}</span>
+          <span class="temario__titulo">{m.titulo}</span>
+          {m.horas && <span class="chip">{m.horas} h</span>}
+          <svg class="temario__icono" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </summary>
+        <div class="temario__cuerpo">
+          <p>{m.contenido}</p>
+          <p class="temario__entregable"><strong>Entregable:</strong> {m.entregable}</p>
+        </div>
+      </details>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .temario {
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .temario li {
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding-block: var(--space-6);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .temario__num {
+    flex-shrink: 0;
+    width: 24px;
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+
+  .temario__titulo {
+    flex: 1;
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .temario__icono {
+    flex-shrink: 0;
+    color: var(--text-muted);
+    transition: transform var(--dur-base) var(--ease-out);
+  }
+
+  details[open] .temario__icono {
+    transform: rotate(180deg);
+  }
+
+  .temario__cuerpo {
+    display: grid;
+    gap: var(--space-3);
+    max-width: 64ch;
+    padding: 0 0 var(--space-6) calc(24px + var(--space-4));
+    color: var(--text-secondary);
+  }
+
+  .temario__entregable strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  @media (max-width: 599px) {
+    .temario__cuerpo {
+      padding-left: 0;
+    }
+  }
+</style>

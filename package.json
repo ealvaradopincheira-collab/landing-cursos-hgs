@@ -1,0 +1,26 @@
+{
+  "name": "hgs-landing-cursos",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Landing de cursos HGS — hidrogeología y geociencias",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "node scripts/validar-contenido.mjs --produccion && astro build",
+    "build:borrador": "node scripts/validar-contenido.mjs && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "node --test \"tests/**/*.test.ts\""
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "astro": "7.3.8"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.12",
+    "@types/node": "24.19.1",
+    "typescript": "5.9.3"
+  }
+}

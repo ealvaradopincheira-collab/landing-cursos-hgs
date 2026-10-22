@@ -1,0 +1,28 @@
+---
+import FiguraTheis from './FiguraTheis.astro';
+import FiguraTalud from './FiguraTalud.astro';
+
+interface Props {
+  tipo: 'theis' | 'talud';
+  id: string;
+}
+const { tipo, id } = Astro.props;
+---
+<div class="diagrama">
+  {tipo === 'theis' && <FiguraTheis id={id} />}
+  {tipo === 'talud' && <FiguraTalud id={id} />}
+</div>
+
+<style>
+  .diagrama {
+    padding: var(--space-6);
+    border-radius: var(--radius-xl);
+    background: var(--bg-surface);
+  }
+
+  @media (min-width: 768px) {
+    .diagrama {
+      padding: var(--space-8);
+    }
+  }
+</style>

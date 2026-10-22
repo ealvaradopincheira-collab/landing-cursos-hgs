@@ -1,0 +1,172 @@
+---
+import { getCollection, getEntries, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import FichaHero from '../../components/FichaHero.astro';
+import SubNav from '../../components/SubNav.astro';
+import Temario from '../../components/Temario.astro';
+import Docentes from '../../components/Docentes.astro';
+import BloqueConvenio from '../../components/BloqueConvenio.astro';
+import BarraInscripcion from '../../components/BarraInscripcion.astro';
+import Formulario from '../../components/Formulario.astro';
+import Campo from '../../components/Campo.astro';
+import { cohorteAbierta } from '../../lib/cohortes';
+import { jsonLdCurso } from '../../lib/jsonld';
+
+export async function getStaticPaths() {
+  const cursos = await getCollection('cursos');
+  return cursos.map((curso) => ({ params: { slug: curso.id }, props: { curso } }));
+}
+
+const { curso } = Astro.props;
+const d = curso.data;
+const docentes = await getEntries(d.docentes);
+const { Content } = await render(curso);
+const abierta = cohorteAbierta(d.cohortes);
+const jsonLd = jsonLdCurso(curso, docentes, new URL(Astro.url.pathname, Astro.site ?? Astro.url).href);
+
+const secciones = [
+  { id: 'descripcion', texto: 'Descripción' },
+  { id: 'temario', texto: 'Temario' },
+  { id: 'docentes', texto: docentes.length > 1 ? 'Docentes' : 'Docente' },
+  ...(d.software.length ? [{ id: 'software', texto: 'Software' }] : []),
+  { id: 'convenios', texto: 'Convenios' },
+  ...(d.faq.length ? [{ id: 'preguntas', texto: 'Preguntas' }] : []),
+  { id: 'informacion', texto: 'Información' },
+];
+---
+<Base titulo={d.titulo} descripcion={d.resumen}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <FichaHero curso={curso} docentes={docentes} />
+  <SubNav secciones={secciones} />
+
+  <div class="contenedor ficha-cuerpo">
+    <section id="descripcion" class="ficha-seccion prosa" aria-labelledby="h-descripcion">
+      <h2 id="h-descripcion">Descripción</h2>
+      <Content />
+    </section>
+
+    <section id="temario" class="ficha-seccion" aria-labelledby="h-temario">
+      <h2 id="h-temario">Temario</h2>
+      <p class="ficha-seccion__bajada">{d.modulos.length} módulos, cada uno con un entregable práctico.</p>
+      <Temario modulos={d.modulos} />
+    </section>
+
+    <section id="docentes" class="ficha-seccion" aria-labelledby="h-docentes">
+      <h2 id="h-docentes">{docentes.length > 1 ? 'Docentes' : 'Docente'}</h2>
+      <Docentes docentes={docentes} />
+    </section>
+
+    {d.software.length > 0 && (
+      <section id="software" class="ficha-seccion" aria-labelledby="h-software">
+        <h2 id="h-software">Software</h2>
+        <ul class="software">
+          {d.software.map((s) => <li class="chip">{s.nombre} · {s.licencia}</li>)}
+        </ul>
+      </section>
+    )}
+
+    <section id="convenios" class="ficha-seccion" aria-labelledby="h-convenios">
+      <h2 id="h-convenios" class="solo-lectores">Convenios</h2>
+      <BloqueConvenio slug={curso.id} />
+    </section>
+
+    {d.faq.length > 0 && (
+      <section id="preguntas" class="ficha-seccion" aria-labelledby="h-preguntas">
+        <h2 id="h-preguntas">Preguntas frecuentes</h2>
+        {d.faq.map((f) => (
+          <details class="faq">
+            <summary>{f.pregunta}</summary>
+            <p>{f.respuesta}</p>
+          </details>
+        ))}
+      </section>
+    )}
+
+    <section id="informacion" class="ficha-seccion informacion" aria-labelledby="h-informacion">
+      <div>
+        <h2 id="h-informacion">{abierta ? '¿Tienes dudas sobre el curso?' : 'Avísame de la próxima cohorte'}</h2>
+        <p class="ficha-seccion__bajada">
+          {abierta
+            ? 'Escríbenos tu consulta y te responderemos dentro de un día hábil.'
+            : 'Déjanos tu correo y te avisaremos cuando abramos inscripciones.'}
+        </p>
+      </div>
+      <Formulario nombre="informacion" accion="/gracias/" etiquetaEnviar={abierta ? 'Enviar consulta' : 'Avísame'}>
+        <input type="hidden" name="curso" value={curso.id} />
+        <input type="hidden" name="tipo" value={abierta ? 'consulta' : 'aviso-proxima-cohorte'} />
+        <Campo etiqueta="Nombre" name="nombre" autocomplete="name" required />
+        <Campo etiqueta="Correo electrónico" name="correo" type="email" autocomplete="email" required />
+        {abierta && <Campo etiqueta="Consulta" name="consulta" multilinea required minlength={10} />}
+      </Formulario>
+    </section>
+  </div>
+
+  {abierta && <BarraInscripcion slug={curso.id} precioCLP={d.precioCLP} />}
+</Base>
+
+<style>
+  :global(html) {
+    scroll-padding-top: 144px;
+  }
+
+  .ficha-cuerpo {
+    display: grid;
+    gap: var(--space-24);
+    padding-top: var(--space-16);
+  }
+
+  .ficha-seccion > h2 {
+    margin-bottom: var(--space-6);
+  }
+
+  .ficha-seccion__bajada {
+    margin-bottom: var(--space-8);
+    color: var(--text-secondary);
+  }
+
+  .prosa :global(p) {
+    max-width: 68ch;
+    color: var(--text-secondary);
+    font-size: clamp(17px, 1.3vw, 19px);
+  }
+
+  .prosa :global(p + p) {
+    margin-top: var(--space-4);
+  }
+
+  .software {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding: 0;
+    list-style: none;
+  }
+
+  .informacion {
+    display: grid;
+    gap: var(--space-8);
+  }
+
+  @media (min-width: 960px) {
+    .informacion {
+      grid-template-columns: 1fr minmax(0, 560px);
+      gap: var(--space-16);
+    }
+  }
+
+  .faq {
+    padding-block: var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .faq summary {
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .faq p {
+    margin-top: var(--space-3);
+    color: var(--text-secondary);
+  }
+</style>

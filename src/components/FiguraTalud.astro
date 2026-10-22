@@ -1,0 +1,38 @@
+---
+import GraficoLinea from './GraficoLinea.astro';
+import { fsTaludInfinito } from '../lib/hidro';
+
+interface Props { id?: string }
+const { id = 'fig-talud' } = Astro.props;
+
+// Parámetros de ejemplo, declarados en la nota de la figura
+const P = { beta: 30, phi: 32, c: 5, gamma: 19, gammaW: 9.81, z: 3 };
+const fs = (m: number) => fsTaludInfinito({ ...P, m });
+const num = (v: number, dec = 2) => v.toLocaleString('es-CL', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+
+const puntos = Array.from({ length: 101 }, (_, i) => [i, fs(i / 100)] as [number, number]);
+
+// Altura del nivel freático que lleva el talud a FS = 1 (bisección)
+let a = 0, b = 1;
+for (let i = 0; i < 50; i++) {
+  const m = (a + b) / 2;
+  if (fs(m) > 1) a = m; else b = m;
+}
+const critico = ((a + b) / 2) * 100;
+
+const filas = [0, 25, 50, 75, 100].map((m) => [`${m} %`, num(fs(m / 100))]);
+---
+<GraficoLinea
+  id={id}
+  titulo="Factor de seguridad de un talud infinito según la altura del nivel freático"
+  descripcion={`Al subir el nivel freático la presión de poros reduce la resistencia al corte: el factor de seguridad baja de ${num(fs(0))} con el talud seco a ${num(fs(1))} saturado, y cruza 1 cuando el agua ocupa el ${Math.round(critico)} % del espesor.`}
+  series={[{ clave: 'fs', nombre: 'Factor de seguridad', color: 'dato-1', puntos }]}
+  ejeX={{ tipo: 'lin', dominio: [0, 100], ticks: [0, 25, 50, 75, 100], formato: (v) => `${v} %`, titulo: 'Espesor saturado, m = hw/z' }}
+  ejeY={{ tipo: 'lin', dominio: [0.6, 1.4], ticks: [0.6, 0.8, 1, 1.2, 1.4], formato: (v) => num(v, 1), titulo: 'Factor de seguridad', omitirMinimo: true }}
+  formatoValorX={(x) => `Espesor saturado ${x} %`}
+  formatoValorY={(y) => `FS ${num(y)}`}
+  referencias={[{ eje: 'y', valor: 1, texto: 'FS = 1, equilibrio límite' }]}
+  marcadores={[{ x: critico, y: 1, texto: `m ≈ ${Math.round(critico)} %`, ancla: 'end' }]}
+  tabla={{ cabeceras: ['Espesor saturado', 'Factor de seguridad'], filas }}
+  nota={`Talud infinito con flujo paralelo a la ladera. Parámetros de ejemplo: β = ${P.beta}°, φ′ = ${P.phi}°, c′ = ${P.c} kPa, γ = ${P.gamma} kN/m³, z = ${P.z} m.`}
+/>

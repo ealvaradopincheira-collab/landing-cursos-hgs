@@ -1,0 +1,192 @@
+---
+const enlaces = [
+  { href: '/#cursos', texto: 'Cursos' },
+  { href: '/convenios/', texto: 'Convenios' },
+  { href: '/#contacto', texto: 'Contacto' },
+];
+---
+<header class="cabecera">
+  <div class="contenedor cabecera__barra">
+    <a class="cabecera__marca" href="/" aria-label="HGS, ir al inicio">
+      <picture>
+        <source srcset="/brand/hgs-logo-oscuro.svg" media="(prefers-color-scheme: dark)" />
+        <img src="/brand/hgs-logo.svg" alt="" width="196" height="45" />
+      </picture>
+    </a>
+
+    <button
+      class="cabecera__menu"
+      type="button"
+      aria-expanded="false"
+      aria-controls="navegacion"
+      data-menu-boton
+    >
+      <span class="solo-lectores">Abrir menú</span>
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+    </button>
+
+    <nav id="navegacion" class="cabecera__nav" aria-label="Principal" data-menu-panel>
+      <ul>
+        {enlaces.map((e) => <li><a href={e.href}>{e.texto}</a></li>)}
+      </ul>
+      <a class="boton boton--primario" href="/#cursos">Ver cursos</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .cabecera {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--bg-canvas) 88%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .cabecera__barra {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    min-height: 72px;
+  }
+
+  .cabecera__marca {
+    display: block;
+    flex-shrink: 0;
+    border-radius: var(--radius-sm);
+  }
+
+  .cabecera__marca img {
+    width: 156px;
+  }
+
+  .cabecera__menu {
+    display: inline-grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: var(--bg-surface);
+    cursor: pointer;
+  }
+
+  .cabecera__nav {
+    display: none;
+  }
+
+  .cabecera__nav ul {
+    display: flex;
+    gap: var(--space-2);
+    padding: 0;
+    list-style: none;
+  }
+
+  .cabecera__nav ul a {
+    display: block;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-pill);
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color var(--dur-base) var(--ease-out), background-color var(--dur-base) var(--ease-out);
+  }
+
+  .cabecera__nav ul a:hover {
+    color: var(--text-primary);
+    background: var(--bg-surface);
+  }
+
+  /* Móvil: panel desplegable bajo la barra */
+  @media (max-width: 767px) {
+    .cabecera__nav.abierto {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--space-4);
+      position: absolute;
+      inset: 72px 0 auto 0;
+      padding: var(--space-4) var(--gutter) var(--space-6);
+      background: var(--bg-canvas);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .cabecera__nav.abierto ul {
+      flex-direction: column;
+    }
+
+    .cabecera__nav.abierto ul a {
+      padding: var(--space-4);
+      font-size: 18px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .cabecera__menu {
+      display: none;
+    }
+
+    .cabecera__nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+    }
+
+    .cabecera__marca img {
+      width: 196px;
+    }
+  }
+</style>
+
+<script>
+  const boton = document.querySelector<HTMLButtonElement>('[data-menu-boton]');
+  const panel = document.querySelector<HTMLElement>('[data-menu-panel]');
+
+  if (boton && panel) {
+    const etiqueta = boton.querySelector('.solo-lectores');
+    const enfocables = () => [boton, ...panel.querySelectorAll<HTMLElement>('a')];
+
+    const abrir = (abierto: boolean) => {
+      boton.setAttribute('aria-expanded', String(abierto));
+      panel.classList.toggle('abierto', abierto);
+      if (etiqueta) etiqueta.textContent = abierto ? 'Cerrar menú' : 'Abrir menú';
+    };
+    const estaAbierto = () => boton.getAttribute('aria-expanded') === 'true';
+
+    boton.addEventListener('click', () => abrir(!estaAbierto()));
+
+    panel.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) abrir(false);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!estaAbierto()) return;
+      if (e.key === 'Escape') {
+        abrir(false);
+        boton.focus();
+        return;
+      }
+      if (e.key === 'Tab') {
+        const lista = enfocables();
+        const primero = lista[0];
+        const ultimo = lista[lista.length - 1];
+        if (e.shiftKey && document.activeElement === primero) {
+          e.preventDefault();
+          ultimo.focus();
+        } else if (!e.shiftKey && document.activeElement === ultimo) {
+          e.preventDefault();
+          primero.focus();
+        }
+      }
+    });
+
+    // Al pasar a escritorio el panel deja de ser un desplegable
+    matchMedia('(min-width: 768px)').addEventListener('change', (m) => {
+      if (m.matches) abrir(false);
+    });
+  }
+</script>

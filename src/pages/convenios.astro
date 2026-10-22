@@ -1,0 +1,114 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Formulario from '../components/Formulario.astro';
+import Campo from '../components/Campo.astro';
+import { SITIO } from '../config/sitio';
+
+const cursos = (await getCollection('cursos')).sort((a, b) => a.data.orden - b.data.orden);
+const minimo = SITIO.convenioMinimoAlumnos;
+---
+<Base titulo="Convenios para empresas e instituciones" descripcion={`Inscripción grupal desde ${minimo} alumnos para empresas e instituciones.`}>
+  <div class="contenedor convenios">
+    <header class="convenios__cabecera">
+      <p class="chip">Desde {minimo} alumnos</p>
+      <h1>Convenios para empresas e instituciones</h1>
+      <p>
+        Para grupos de {minimo} o más participantes de una misma organización se acuerdan las condiciones
+        de inscripción y se gestiona el pago en una sola operación. Envíanos los datos del grupo y te
+        responderemos dentro de un día hábil.
+      </p>
+    </header>
+
+    <Formulario nombre="convenio" accion="/gracias/" etiquetaEnviar="Solicitar convenio"
+      mensajeExito="Recibimos tu solicitud de convenio. Te contactaremos dentro de un día hábil con las condiciones para tu grupo.">
+      <div class="campo">
+        <label for="campo-curso">Curso <span aria-hidden="true">*</span></label>
+        <select id="campo-curso" name="curso" required data-curso-select>
+          {cursos.map((c) => <option value={c.id}>{c.data.titulo}</option>)}
+        </select>
+      </div>
+      <Campo etiqueta="Empresa o institución" name="empresa" autocomplete="organization" required />
+      <Campo etiqueta="Nombre de contacto" name="nombre" autocomplete="name" required minlength={3} />
+      <Campo etiqueta="Correo electrónico" name="correo" type="email" autocomplete="email" required />
+      <Campo etiqueta="Teléfono" name="telefono" type="tel" autocomplete="tel" />
+      <Campo etiqueta="Número de participantes" name="participantes" type="number" inputmode="numeric"
+        min={minimo} step="1" required
+        data-mensaje-min={`El convenio aplica desde ${minimo} alumnos. Para menos participantes, usa la inscripción individual.`}
+        ayuda={`Mínimo ${minimo} participantes.`} />
+    </Formulario>
+
+    <aside class="individual" aria-labelledby="h-individual">
+      <h2 id="h-individual">¿Menos de {minimo} participantes?</h2>
+      <p>Cada persona puede inscribirse de forma individual:</p>
+      <ul>
+        {cursos.map((c) => <li><a href={`/inscripcion/${c.id}/`}>Inscripción individual · {c.data.titulo}</a></li>)}
+      </ul>
+    </aside>
+  </div>
+</Base>
+
+<style>
+  .convenios {
+    display: grid;
+    gap: var(--space-12);
+    max-width: 640px;
+    padding-block: var(--space-16);
+  }
+
+  .convenios__cabecera h1 {
+    margin-block: var(--space-4);
+    font-size: var(--fs-h1);
+  }
+
+  .convenios__cabecera p:last-child {
+    color: var(--text-secondary);
+  }
+
+  .campo {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .campo label {
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  select {
+    width: 100%;
+    min-height: 48px;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    background: var(--bg-canvas);
+    font-size: 16px;
+  }
+
+  .individual {
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .individual h2 {
+    font-size: var(--fs-h3);
+  }
+
+  .individual p {
+    margin-block: var(--space-2) var(--space-4);
+    color: var(--text-secondary);
+  }
+
+  .individual ul {
+    display: grid;
+    gap: var(--space-2);
+    padding-left: var(--space-6);
+  }
+</style>
+
+<script>
+  // Preselecciona el curso indicado en ?curso=<slug>
+  const curso = new URLSearchParams(location.search).get('curso');
+  const select = document.querySelector<HTMLSelectElement>('[data-curso-select]');
+  if (curso && select && [...select.options].some((o) => o.value === curso)) select.value = curso;
+</script>
