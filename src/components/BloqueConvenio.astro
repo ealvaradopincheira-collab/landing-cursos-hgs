@@ -1,11 +1,12 @@
 ---
+import { ruta } from '../lib/rutas';
 import { SITIO } from '../config/sitio';
 
 interface Props {
   slug?: string;
 }
 const { slug } = Astro.props;
-const href = slug ? `/convenios/?curso=${slug}` : '/convenios/';
+const href = ruta(slug ? `/convenios/?curso=${slug}` : '/convenios/');
 ---
 <div class="convenio">
   <div>

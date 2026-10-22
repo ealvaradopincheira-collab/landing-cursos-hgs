@@ -1,4 +1,5 @@
 ---
+import { ruta } from '../../lib/rutas';
 import { getCollection, getEntries, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import FichaHero from '../../components/FichaHero.astro';
@@ -92,7 +93,7 @@ const secciones = [
             : 'Déjanos tu correo y te avisaremos cuando abramos inscripciones.'}
         </p>
       </div>
-      <Formulario nombre="informacion" accion="/gracias/" etiquetaEnviar={abierta ? 'Enviar consulta' : 'Avísame'}>
+      <Formulario nombre="informacion" accion={ruta('/gracias/')} etiquetaEnviar={abierta ? 'Enviar consulta' : 'Avísame'}>
         <input type="hidden" name="curso" value={curso.id} />
         <input type="hidden" name="tipo" value={abierta ? 'consulta' : 'aviso-proxima-cohorte'} />
         <Campo etiqueta="Nombre" name="nombre" autocomplete="name" required />

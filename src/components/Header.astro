@@ -1,18 +1,29 @@
 ---
+import { ruta } from '../lib/rutas';
+
 const enlaces = [
-  { href: '/#cursos', texto: 'Cursos' },
-  { href: '/convenios/', texto: 'Convenios' },
-  { href: '/#contacto', texto: 'Contacto' },
+  { href: ruta('/#cursos'), texto: 'Cursos' },
+  { href: ruta('/convenios/'), texto: 'Convenios' },
+  { href: ruta('/#contacto'), texto: 'Contacto' },
 ];
 ---
 <header class="cabecera">
   <div class="contenedor cabecera__barra">
-    <a class="cabecera__marca" href="/" aria-label="HGS, ir al inicio">
-      <picture>
-        <source srcset="/brand/hgs-logo-oscuro.svg" media="(prefers-color-scheme: dark)" />
-        <img src="/brand/hgs-logo.svg" alt="" width="196" height="45" />
-      </picture>
+    <a class="cabecera__marca" href={ruta('/')} aria-label="HGS, ir al inicio">
+      <img class="logo-claro" src={ruta('/brand/hgs-logo.svg')} alt="" width="196" height="45" />
+      <img class="logo-oscuro" src={ruta('/brand/hgs-logo-oscuro.svg')} alt="" width="196" height="45" loading="lazy" />
     </a>
+
+    <button class="cabecera__tema" type="button" aria-pressed="false" data-tema-boton>
+      <span class="solo-lectores">Tema oscuro</span>
+      <svg class="icono-luna" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+      </svg>
+      <svg class="icono-sol" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+    </button>
 
     <button
       class="cabecera__menu"
@@ -31,7 +42,7 @@ const enlaces = [
       <ul>
         {enlaces.map((e) => <li><a href={e.href}>{e.texto}</a></li>)}
       </ul>
-      <a class="boton boton--primario" href="/#cursos">Ver cursos</a>
+      <a class="boton boton--primario" href={ruta('/#cursos')}>Ver cursos</a>
     </nav>
   </div>
 </header>
@@ -57,6 +68,7 @@ const enlaces = [
   .cabecera__marca {
     display: block;
     flex-shrink: 0;
+    margin-right: auto;
     border-radius: var(--radius-sm);
   }
 
@@ -64,7 +76,30 @@ const enlaces = [
     width: 156px;
   }
 
+  .cabecera__tema {
+    order: 1;
+    display: inline-grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    cursor: pointer;
+  }
+
+  .icono-sol,
+  :global([data-theme='dark']) .icono-luna {
+    display: none;
+  }
+
+  :global([data-theme='dark']) .icono-sol {
+    display: block;
+  }
+
   .cabecera__menu {
+    order: 2;
     display: inline-grid;
     place-items: center;
     width: 48px;
@@ -143,6 +178,24 @@ const enlaces = [
 </style>
 
 <script>
+  // Selector de tema (Tarea 7.1): el claro es el predeterminado; la elección se guarda por visitante.
+  const botonTema = document.querySelector<HTMLButtonElement>('[data-tema-boton]');
+  if (botonTema) {
+    const raiz = document.documentElement;
+    const sincronizar = () => botonTema.setAttribute('aria-pressed', String(raiz.dataset.theme === 'dark'));
+    sincronizar();
+    botonTema.addEventListener('click', () => {
+      const oscuro = raiz.dataset.theme !== 'dark';
+      if (oscuro) raiz.dataset.theme = 'dark';
+      else delete raiz.dataset.theme;
+      document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')?.setAttribute('content', oscuro ? '#090D16' : '#FAF9F6');
+      try {
+        localStorage.setItem('hgs-tema', oscuro ? 'oscuro' : 'claro');
+      } catch {}
+      sincronizar();
+    });
+  }
+
   const boton = document.querySelector<HTMLButtonElement>('[data-menu-boton]');
   const panel = document.querySelector<HTMLElement>('[data-menu-panel]');
 

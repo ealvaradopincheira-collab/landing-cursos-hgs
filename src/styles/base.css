@@ -15,6 +15,16 @@
   display: none !important;
 }
 
+/* Logo según el tema elegido (Tarea 7.1) */
+.logo-oscuro,
+[data-theme='dark'] .logo-claro {
+  display: none;
+}
+
+[data-theme='dark'] .logo-oscuro {
+  display: block;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;

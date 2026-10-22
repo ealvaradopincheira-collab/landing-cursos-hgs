@@ -3,6 +3,7 @@ import { Font } from 'astro:assets';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITIO } from '../config/sitio';
+import { ruta } from '../lib/rutas';
 import '../styles/tokens.css';
 import '../styles/base.css';
 
@@ -21,9 +22,18 @@ const tituloCompleto = titulo ? `${titulo} · ${SITIO.nombre}` : `${SITIO.nombre
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{tituloCompleto}</title>
     <meta name="description" content={descripcion} />
-    <meta name="theme-color" content="#FAF9F6" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#090D16" media="(prefers-color-scheme: dark)" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#FAF9F6" />
+    <link rel="icon" href={ruta('/favicon.svg')} type="image/svg+xml" />
+    {SITIO.vistaPrevia && <meta name="robots" content="noindex" />}
+    <!-- Tema elegido por el visitante, aplicado antes del primer pintado (Tarea 7.1) -->
+    <script is:inline>
+      try {
+        if (localStorage.getItem('hgs-tema') === 'oscuro') {
+          document.documentElement.dataset.theme = 'dark';
+          document.querySelector('meta[name="theme-color"]').content = '#090D16';
+        }
+      } catch {}
+    </script>
 
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_CL" />
@@ -38,6 +48,12 @@ const tituloCompleto = titulo ? `${titulo} · ${SITIO.nombre}` : `${SITIO.nombre
   </head>
   <body>
     <a class="saltar" href="#contenido">Saltar al contenido</a>
+    {SITIO.vistaPrevia && (
+      <p class="vista-previa">
+        <strong>Vista previa para revisión.</strong> Los datos «Por confirmar» y los temarios están pendientes de validación;
+        la inscripción se habilita en la publicación definitiva.
+      </p>
+    )}
     <Header />
     <main id="contenido" tabindex="-1">
       <slot />
@@ -62,6 +78,15 @@ const tituloCompleto = titulo ? `${titulo} · ${SITIO.nombre}` : `${SITIO.nombre
 
   .saltar:focus {
     top: var(--space-4);
+  }
+
+  .vista-previa {
+    padding: var(--space-2) var(--gutter);
+    background: var(--bg-inverse);
+    color: var(--text-on-inverse);
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
   }
 
   main:focus {

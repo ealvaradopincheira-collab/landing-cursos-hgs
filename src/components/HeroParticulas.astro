@@ -1,8 +1,18 @@
 ---
-// Fondo del hero: líneas de flujo hacia un pozo de bombeo. Decorativo (aria-hidden en el contenedor).
+// Fondo del hero: líneas de flujo hacia un pozo de bombeo. El lienzo es decorativo (aria-hidden).
 // Se inicia después del primer render para no competir con el LCP (el H1).
+// Control de pausa (WCAG 2.2.2): con movimiento reducido arranca detenida; la elección se guarda (Tarea 7.2).
 ---
-<canvas class="particulas" data-particulas></canvas>
+<canvas class="particulas" data-particulas aria-hidden="true"></canvas>
+<button class="particulas__control" type="button" data-particulas-control hidden>
+  <svg class="icono-pausa" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+    <path d="M5 3v10M11 3v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+  </svg>
+  <svg class="icono-reproducir" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+    <path d="M5 3.5v9l7.5-4.5Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+  </svg>
+  <span data-particulas-texto>Pausar animación</span>
+</button>
 
 <style>
   .particulas {
@@ -13,17 +23,92 @@
     mask-image: linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.15) 30%, rgb(0 0 0 / 0.6) 50%, #000 66%);
   }
 
+  .particulas__control {
+    position: absolute;
+    z-index: 2;
+    right: max(var(--gutter), calc((100% - var(--container)) / 2 + var(--gutter)));
+    bottom: var(--space-6);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 44px;
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--bg-canvas) 88%, transparent);
+    color: var(--text-secondary);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
+  }
+
+  .particulas__control:hover {
+    color: var(--text-primary);
+    border-color: var(--text-muted);
+  }
+
+  .icono-reproducir,
+  .particulas__control[aria-pressed='true'] .icono-pausa {
+    display: none;
+  }
+
+  .particulas__control[aria-pressed='true'] .icono-reproducir {
+    display: block;
+  }
+
   @media (max-width: 767px) {
     .particulas {
       mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.15) 45%, #000 80%);
+    }
+
+    .particulas__control {
+      bottom: var(--space-4);
     }
   }
 </style>
 
 <script>
+  import type { ControlParticulas } from '../scripts/particulas';
+
   const lienzo = document.querySelector<HTMLCanvasElement>('[data-particulas]');
-  if (lienzo) {
-    const iniciar = () => import('../scripts/particulas').then((m) => m.iniciarParticulas(lienzo));
+  const boton = document.querySelector<HTMLButtonElement>('[data-particulas-control]');
+  const texto = boton?.querySelector('[data-particulas-texto]');
+
+  const leerPreferencia = () => {
+    try {
+      return localStorage.getItem('hgs-animacion');
+    } catch {
+      return null;
+    }
+  };
+
+  if (lienzo && boton && texto) {
+    const guardada = leerPreferencia();
+    const reproducir = guardada ? guardada === 'si' : !matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // aria-pressed = «detenida»; el texto nombra la acción disponible
+    const mostrar = (control: ControlParticulas) => {
+      boton.setAttribute('aria-pressed', String(!control.reproduciendo));
+      texto.textContent = control.reproduciendo ? 'Pausar animación' : 'Reproducir animación';
+    };
+
+    const iniciar = () =>
+      import('../scripts/particulas').then((m) => {
+        const control = m.iniciarParticulas(lienzo, reproducir);
+        if (!control) return;
+        mostrar(control);
+        boton.hidden = false;
+        boton.addEventListener('click', () => {
+          if (control.reproduciendo) control.pausar();
+          else control.reproducir();
+          try {
+            localStorage.setItem('hgs-animacion', control.reproduciendo ? 'si' : 'no');
+          } catch {}
+          mostrar(control);
+        });
+      });
     if ('requestIdleCallback' in window) requestIdleCallback(iniciar, { timeout: 1500 });
     else setTimeout(iniciar, 300);
   }

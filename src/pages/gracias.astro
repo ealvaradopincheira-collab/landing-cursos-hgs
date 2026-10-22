@@ -1,4 +1,5 @@
 ---
+import { ruta } from '../lib/rutas';
 // Destino de los formularios de información y convenio cuando se envían sin JavaScript.
 import Base from '../layouts/Base.astro';
 ---
@@ -9,6 +10,6 @@ import Base from '../layouts/Base.astro';
     <p style="margin-top: var(--space-4); color: var(--text-secondary);">
       Te responderemos dentro de un día hábil al correo que indicaste.
     </p>
-    <p style="margin-top: var(--space-8);"><a class="boton boton--secundario" href="/">Volver al inicio</a></p>
+    <p style="margin-top: var(--space-8);"><a class="boton boton--secundario" href={ruta('/')}>Volver al inicio</a></p>
   </div>
 </Base>

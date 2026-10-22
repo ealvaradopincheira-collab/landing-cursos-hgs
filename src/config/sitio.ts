@@ -8,4 +8,6 @@ export const SITIO = {
   convenioMinimoAlumnos: 6,
   /** Términos y privacidad son borradores hasta su revisión por HGS (con asesoría legal). */
   legalesValidados: false,
+  /** Build de vista previa (GitHub Pages): noindex, aviso y formularios sin envío (tasks.md, Tarea 7.3). */
+  vistaPrevia: import.meta.env.PUBLIC_VISTA_PREVIA === '1',
 } as const;

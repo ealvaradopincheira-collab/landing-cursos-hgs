@@ -129,6 +129,8 @@ Todos llevan campo *honeypot* anti-spam.
 - **Figuras** (`GraficoLinea.astro`): SVG generado en el build desde `src/lib/hidro.ts`; capa de hover y teclado; tabla de datos.
 - **Formularios**: AJAX a `/` (Netlify Forms) con `form-name`; `action` como respaldo sin JavaScript. Pago en `/inscripcion/<curso>/pago/`.
 
+- **Vista previa (Bloque 7)**: GitHub Pages publica `build:borrador` con `HGS_BASE=/landing-cursos-hgs` y `PUBLIC_VISTA_PREVIA=1` (`.github/workflows/vista-previa.yml`). Toda ruta interna pasa por `ruta()` (`src/lib/rutas.ts`). Tema claro por defecto con selector; animación del hero con botón de pausa (WCAG 2.2.2).
+
 ## 6. Pendientes
 - D-08 dominio y correo de HGS (necesarios para el aviso de formularios y para Mercado Pago).
 - D-09 confirmar Netlify como hosting y proveedor de formularios.

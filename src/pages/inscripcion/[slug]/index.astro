@@ -1,4 +1,5 @@
 ---
+import { ruta } from '../../../lib/rutas';
 import { getCollection } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import Formulario from '../../../components/Formulario.astro';
@@ -14,7 +15,7 @@ export async function getStaticPaths() {
 const { curso } = Astro.props;
 const d = curso.data;
 const cohorte = cohorteAbierta(d.cohortes);
-const pago = `/inscripcion/${curso.id}/pago/`;
+const pago = ruta(`/inscripcion/${curso.id}/pago/`);
 ---
 <Base titulo={`Inscripción · ${d.titulo}`}>
   <meta slot="head" name="robots" content="noindex" />
@@ -23,7 +24,7 @@ const pago = `/inscripcion/${curso.id}/pago/`;
     <p class="paso mono">Paso 1 de 2 · Tus datos</p>
     <h1>Inscripción</h1>
     <p class="resumen">
-      <a href={`/cursos/${curso.id}/`}>{d.titulo}</a>
+      <a href={ruta(`/cursos/${curso.id}/`)}>{d.titulo}</a>
       {cohorte && <> · inicia el {formatoFecha(cohorte.inicio)} · <span class="mono">{formatoCLP(d.precioCLP)}</span> CLP</>}
     </p>
 
@@ -47,7 +48,7 @@ const pago = `/inscripcion/${curso.id}/pago/`;
           <div class="acepto">
             <input type="checkbox" id="campo-terminos" name="acepta-terminos" value="si" required aria-describedby="campo-terminos-error"
               data-mensaje-faltante="Para continuar debes aceptar los términos de inscripción." />
-            <label for="campo-terminos">Acepto los <a href="/terminos/" target="_blank">términos de inscripción</a> y la <a href="/privacidad/" target="_blank">política de privacidad</a>.</label>
+            <label for="campo-terminos">Acepto los <a href={ruta('/terminos/')} target="_blank">términos de inscripción</a> y la <a href={ruta('/privacidad/')} target="_blank">política de privacidad</a>.</label>
             <p class="campo__error" id="campo-terminos-error" data-error-de="campo-terminos" hidden></p>
           </div>
         </Formulario>
@@ -55,7 +56,7 @@ const pago = `/inscripcion/${curso.id}/pago/`;
     ) : (
       <div class="cerrada">
         <p>Este curso no tiene una cohorte con inscripciones abiertas.</p>
-        <a class="boton boton--secundario" href={`/cursos/${curso.id}/#informacion`}>Avísame de la próxima cohorte</a>
+        <a class="boton boton--secundario" href={ruta(`/cursos/${curso.id}/#informacion`)}>Avísame de la próxima cohorte</a>
       </div>
     )}
   </div>

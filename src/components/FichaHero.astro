@@ -1,4 +1,5 @@
 ---
+import { ruta } from '../lib/rutas';
 import type { CollectionEntry } from 'astro:content';
 import { cohorteAbierta } from '../lib/cohortes';
 import { formatoCLP, formatoFecha, mostrar } from '../lib/formato';
@@ -42,8 +43,8 @@ const duracion = d.horas === 'PENDIENTE' || d.semanas === 'PENDIENTE'
           <span class="mono">{formatoCLP(d.precioCLP)}</span>
           <span class="inscripcion__moneda">CLP · precio único</span>
         </p>
-        <a class="boton boton--primario inscripcion__cta" href={`/inscripcion/${curso.id}/`} data-cta-inscripcion>Inscribirme</a>
-        <a class="inscripcion__convenio" href={`/convenios/?curso=${curso.id}`}>
+        <a class="boton boton--primario inscripcion__cta" href={ruta(`/inscripcion/${curso.id}/`)} data-cta-inscripcion>Inscribirme</a>
+        <a class="inscripcion__convenio" href={ruta(`/convenios/?curso=${curso.id}`)}>
           ¿Grupo de {SITIO.convenioMinimoAlumnos} o más? Convenio para empresas e instituciones
         </a>
       </>
@@ -51,7 +52,7 @@ const duracion = d.horas === 'PENDIENTE' || d.semanas === 'PENDIENTE'
       <>
         <p class="inscripcion__etiqueta">Sin cohorte abierta</p>
         <p class="inscripcion__inicio">La próxima cohorte aún no tiene fecha.</p>
-        <a class="boton boton--secundario inscripcion__cta" href={`/cursos/${curso.id}/#informacion`}>Avísame de la próxima cohorte</a>
+        <a class="boton boton--secundario inscripcion__cta" href={ruta(`/cursos/${curso.id}/#informacion`)}>Avísame de la próxima cohorte</a>
       </>
     )}
   </aside>

@@ -40,6 +40,8 @@
   --border-focus: #0F5E7A;
 }
 
+/* Desde la Tarea 7.1 el claro es el predeterminado: el oscuro se activa solo con el
+   selector de la cabecera (data-theme="dark" en <html>, guardado en localStorage). */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg-canvas: #090D16;

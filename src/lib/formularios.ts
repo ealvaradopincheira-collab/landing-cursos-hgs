@@ -69,6 +69,7 @@ export function activarFormularios() {
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if (form.hasAttribute('data-vista-previa')) return;
       if (boton.getAttribute('aria-busy') === 'true') return;
       if (!validar(form)) return;
 
@@ -79,8 +80,8 @@ export function activarFormularios() {
 
       try {
         const cuerpo = new URLSearchParams(new FormData(form) as unknown as Record<string, string>);
-        // Netlify Forms recibe el POST AJAX en "/"; `action` queda como respaldo sin JavaScript.
-        const respuesta = await fetch('/', {
+        // Netlify Forms recibe el POST AJAX en la raíz del sitio; `action` queda como respaldo sin JavaScript.
+        const respuesta = await fetch(import.meta.env.BASE_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: cuerpo.toString(),

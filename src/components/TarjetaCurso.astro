@@ -1,4 +1,5 @@
 ---
+import { ruta } from '../lib/rutas';
 // Fila del explorador de cursos: texto + figura técnica, alternando el lado en escritorio.
 import type { CollectionEntry } from 'astro:content';
 import { cohorteAbierta } from '../lib/cohortes';
@@ -18,7 +19,7 @@ const AREA = { hidrogeologia: 'Hidrogeología', geociencias: 'Geociencias' } as 
 <article class:list={['fila', { 'fila--invertida': invertir }]} aria-labelledby={`curso-${curso.id}`}>
   <div class="fila__texto">
     <p class="chip">{AREA[d.area]}</p>
-    <h3 id={`curso-${curso.id}`}><a href={`/cursos/${curso.id}/`}>{d.titulo}</a></h3>
+    <h3 id={`curso-${curso.id}`}><a href={ruta(`/cursos/${curso.id}/`)}>{d.titulo}</a></h3>
     <p class="fila__resumen">{d.resumen}</p>
     <p class="fila__docentes">{docentes.map((p) => p.data.nombre).join(' · ')}</p>
     <ul class="fila__datos" aria-label="Datos del curso">
@@ -29,8 +30,8 @@ const AREA = { hidrogeologia: 'Hidrogeología', geociencias: 'Geociencias' } as 
       <li class="chip">{formatoCLP(d.precioCLP)} CLP</li>
     </ul>
     <div class="fila__acciones">
-      <a class="boton boton--secundario" href={`/cursos/${curso.id}/`}>Ver temario y docentes<span class="solo-lectores"> de {d.titulo}</span></a>
-      {cohorte && <a class="boton boton--primario" href={`/inscripcion/${curso.id}/`}>Inscribirme<span class="solo-lectores"> en {d.titulo}</span></a>}
+      <a class="boton boton--secundario" href={ruta(`/cursos/${curso.id}/`)}>Ver temario y docentes<span class="solo-lectores"> de {d.titulo}</span></a>
+      {cohorte && <a class="boton boton--primario" href={ruta(`/inscripcion/${curso.id}/`)}>Inscribirme<span class="solo-lectores"> en {d.titulo}</span></a>}
     </div>
   </div>
   {d.diagrama && (

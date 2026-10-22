@@ -1,4 +1,5 @@
 ---
+import { ruta } from '../lib/rutas';
 import { getCollection } from 'astro:content';
 import { cohorteAbierta } from '../lib/cohortes';
 import { formatoFecha } from '../lib/formato';
@@ -9,9 +10,6 @@ const inicios = cursos.map((c) => cohorteAbierta(c.data.cohortes)?.inicio).filte
 const proximo = inicios[0];
 ---
 <section class="hero" aria-labelledby="hero-titulo">
-  <div class="hero__campo" aria-hidden="true">
-    <slot name="fondo" />
-  </div>
   <div class="contenedor hero__contenido">
     {proximo && (
       <a class="hero__anuncio" href="#cursos">
@@ -26,8 +24,12 @@ const proximo = inicios[0];
     </p>
     <div class="hero__acciones">
       <a class="boton boton--primario" href="#cursos">Ver cursos</a>
-      <a class="boton boton--secundario" href="/convenios/">Convenios desde {SITIO.convenioMinimoAlumnos} alumnos</a>
+      <a class="boton boton--secundario" href={ruta('/convenios/')}>Convenios desde {SITIO.convenioMinimoAlumnos} alumnos</a>
     </div>
+  </div>
+  <!-- Después del contenido en el DOM: el botón de pausa del fondo va al final del orden de foco del hero -->
+  <div class="hero__campo">
+    <slot name="fondo" />
   </div>
 </section>
 
@@ -38,13 +40,16 @@ const proximo = inicios[0];
     isolation: isolate;
   }
 
+  /* El campo no forma contexto de apilamiento: el lienzo queda bajo el texto (z-index 1)
+     y el botón de pausa del fondo (z-index 2), sobre él. */
   .hero__campo {
     position: absolute;
     inset: 0;
-    z-index: -1;
   }
 
   .hero__contenido {
+    position: relative;
+    z-index: 1;
     padding-block: var(--space-16) var(--space-24);
   }
 

@@ -166,3 +166,29 @@
 > - **ADV-08 / responsivo**: medición `scrollWidth` vía CDP en 9 páginas × 4 anchos (320/375/768/1280) con todos los `<details>` abiertos → 0 desbordes, tras corregir hijos de grid sin `min-width: 0` (la tabla abierta ensanchaba la página a 532 px en móvil).
 > - **6.2 Lighthouse 13.5.0 móvil**: rendimiento 99–100, accesibilidad 100, buenas prácticas 100, SEO 100 (63 en `/inscripcion/`, por `noindex` deliberado). LCP 1,6–1,8 s, CLS 0 en las 6 páginas medidas, TBT 0 ms, 0–2 peticiones JS. Correcciones: CSS incrustado (`inlineStylesheets: 'always'`, 25 KB en total), precarga solo del subconjunto `latin` de las fuentes display y cuerpo (CLS de inscripción 0,181 → 0), `font-display: optional` para la monoespaciada (CLS de ficha 0,069 → 0).
 > - **Partículas**: peor cuadro 14,0 ms con CPU 4× en 390 px (presupuesto 16,7 ms para 60 FPS).
+
+---
+
+## Bloque 7: Vista previa para revisión (solicitud del 2026-10-22)
+
+Origen: el usuario necesita compartir el sitio con sus colegas antes de completar los datos de la 6.3. Su equipo tiene Windows en modo oscuro y los *Efectos de animación* desactivados: el sitio se mostraba oscuro y el hero, sin movimiento.
+
+- [x] **Tarea 7.1: Tema claro por defecto con selector**
+  - **Acción**: Se elimina el seguimiento automático de `prefers-color-scheme`. El tema claro es el predeterminado; un botón en la cabecera alterna a oscuro y guarda la elección en `localStorage`, que se aplica antes del primer pintado.
+  - **Archivos**: `src/styles/tokens.css`, `src/layouts/Base.astro`, `src/components/Header.astro`, `Footer.astro`, `src/scripts/particulas.ts`.
+  - **Verificación**: Con el sistema en oscuro, la página carga clara. El botón cambia el tema y lo mantiene al navegar; sin parpadeo; CLS 0.
+
+- [x] **Tarea 7.2: Control de la animación del hero**
+  - **Acción**: Botón «Pausar animación / Reproducir animación» sobre el hero (WCAG 2.2.2: movimiento automático de más de 5 s). Con `prefers-reduced-motion: reduce` la animación arranca detenida y el botón permite reproducirla; la elección del visitante se guarda en `localStorage`.
+  - **Archivos**: `src/components/HeroParticulas.astro`, `HeroHome.astro`, `src/scripts/particulas.ts`.
+  - **Verificación**: Con movimiento reducido: cuadro estático y el botón inicia la animación. Sin reducción: anima y el botón la detiene. Botón operable con teclado; ≥ 44 px de alto.
+
+- [x] **Tarea 7.3: Vista previa en GitHub Pages**
+  - **Acción**: Rutas internas con el prefijo `base` de Astro (`src/lib/rutas.ts`). Build de vista previa (`PUBLIC_VISTA_PREVIA=1`, `HGS_BASE=/landing-cursos-hgs`): `noindex` en todas las páginas, aviso de vista previa y envío de formularios deshabilitado (GitHub Pages no recibe formularios). Flujo de GitHub Actions que publica `build:borrador` en cada push a `main`.
+  - **Archivos**: `astro.config.mjs`, `src/lib/rutas.ts`, `src/config/sitio.ts`, componentes y páginas con enlaces internos, `src/lib/formularios.ts`, `.github/workflows/vista-previa.yml`.
+  - **Verificación**: 0 enlaces internos rotos bajo el prefijo; build con `base: '/'` idéntico en rutas al anterior; la URL de GitHub Pages responde 200 en las 11 páginas.
+
+> **Resultado Bloque 7 (2026-10-22)**:
+> - **Causa**: el equipo del usuario tiene Windows en modo oscuro y *Efectos de animación* desactivados (`SPI_GETCLIENTAREAANIMATION` = falso → `prefers-reduced-motion: reduce`); el sitio respetaba ambas preferencias.
+> - **7.1 / 7.2** (CDP con sistema oscuro + movimiento reducido emulados, 1280 y 390 px): carga en claro (`#FAF9F6`); lienzo quieto y botón «Reproducir animación» (44 px); al pulsarlo, el lienzo cambia entre cuadros y se guarda `hgs-animacion=si`; el selector pasa a oscuro y ambas elecciones se mantienen tras recargar. Defecto corregido: el botón de animación recibía el foco antes que el H1 (el campo se movió después del contenido en el DOM).
+> - **7.3**: 222 enlaces internos con prefijo `/landing-cursos-hgs/`, 0 rotos; `noindex` y aviso en las 11 páginas; el POST AJAX apunta a la base. Build sin prefijo: 220 enlaces, 0 rotos, sin aviso ni `noindex` agregado; `npm run build` sigue bloqueado por los mismos 22 pendientes. Lighthouse (portada de vista previa, servidor local sin compresión): rendimiento 98, accesibilidad 100, buenas prácticas 100; CLS 0; LCP 2,2 s.

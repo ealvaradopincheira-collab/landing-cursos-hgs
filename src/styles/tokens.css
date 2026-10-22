@@ -3,7 +3,7 @@
    las define la API de fuentes de Astro (astro.config.mjs). */
 
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
 
   /* Lienzo */
   --bg-canvas: #FAF9F6;
@@ -77,29 +77,10 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg-canvas: #090D16;
-    --bg-surface: #111827;
-    --bg-inverse: #F3F4F6;
-    --brand-primary: #5CC3DF;
-    --brand-accent: #F0A44B;
-    --brand-primary-glow: rgba(92, 195, 223, 0.16);
-    --text-primary: #F3F4F6;
-    --text-secondary: #A7AEB9;
-    --text-muted: #8A919C;
-    --text-on-inverse: #090D16;
-    --border-subtle: rgba(243, 244, 246, 0.08);
-    --border-strong: rgba(243, 244, 246, 0.20);
-    --border-focus: #5CC3DF;
-    --dato-1: #2E9CC0;
-    --dato-2: #C97A2C;
-    --grilla: rgba(243, 244, 246, 0.10);
-    --eje: rgba(243, 244, 246, 0.28);
-  }
-}
-
+/* Tema oscuro: solo por elección del visitante (botón de la cabecera). El claro es el predeterminado
+   aunque el sistema esté en oscuro (tasks.md, Tarea 7.1). */
 :root[data-theme="dark"] {
+  color-scheme: dark;
   --bg-canvas: #090D16;
   --bg-surface: #111827;
   --bg-inverse: #F3F4F6;

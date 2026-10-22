@@ -1,6 +1,9 @@
 ---
 // Formulario Netlify con envío AJAX, honeypot y estados de envío/éxito/error (tech_spec §2).
 // Sin JavaScript el formulario se envía de forma nativa a `accion`.
+// En la vista previa (GitHub Pages, sin receptor de formularios) el envío queda deshabilitado (Tarea 7.3).
+import { SITIO } from '../config/sitio';
+
 interface Props {
   nombre: 'inscripcion' | 'informacion' | 'convenio';
   accion: string;
@@ -21,6 +24,7 @@ const { nombre, accion, etiquetaEnviar, redirigir, mensajeExito = 'Recibimos tu 
   netlify-honeypot="campo-trampa"
   data-formulario
   data-redirigir={redirigir}
+  data-vista-previa={SITIO.vistaPrevia ? '' : undefined}
   novalidate
 >
   <input type="hidden" name="form-name" value={nombre} />
@@ -31,8 +35,14 @@ const { nombre, accion, etiquetaEnviar, redirigir, mensajeExito = 'Recibimos tu 
   <slot />
 
   <div class="formulario__acciones">
-    <button class="boton boton--primario" type="submit" data-enviar>{etiquetaEnviar}</button>
+    <button class="boton boton--primario" type="submit" data-enviar disabled={SITIO.vistaPrevia}>{etiquetaEnviar}</button>
   </div>
+  {SITIO.vistaPrevia && (
+    <p class="formulario__vista-previa">
+      Vista previa: el envío se habilita en la publicación definitiva.
+      {redirigir && <> <a href={redirigir}>Ver el paso siguiente</a>.</>}
+    </p>
+  )}
 
   <div class="formulario__estado" role="status" aria-live="polite" data-estado></div>
   <div class="formulario__error" role="alert" data-error-envio hidden>
@@ -63,6 +73,16 @@ const { nombre, accion, etiquetaEnviar, redirigir, mensajeExito = 'Recibimos tu 
   .formulario__acciones .boton[aria-busy='true'] {
     opacity: 0.7;
     cursor: progress;
+  }
+
+  .formulario__acciones .boton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .formulario__vista-previa {
+    color: var(--text-secondary);
+    font-size: 15px;
   }
 
   .formulario__estado:empty {

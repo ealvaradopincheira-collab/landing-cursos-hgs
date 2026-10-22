@@ -26,3 +26,9 @@ En este equipo `node` no está en el PATH de las herramientas: anteponer `export
 | Logo | `brand/` (generador en `brand/fuente/make_logo.py`) |
 
 Para publicar, `npm run build` lista exactamente qué datos faltan.
+
+## Vista previa para revisión
+
+Cada push a `main` publica el borrador en **https://ealvaradopincheira-collab.github.io/landing-cursos-hgs/** (GitHub Actions, `.github/workflows/vista-previa.yml`). Esa versión no se indexa en buscadores, muestra un aviso de vista previa y no envía formularios. La publicación definitiva es en Netlify (`specs/tasks.md`, Tarea 6.3).
+
+Los enlaces internos se escriben con `ruta('/…')` (`src/lib/rutas.ts`) para que funcionen con y sin el prefijo `/landing-cursos-hgs/`.

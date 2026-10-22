@@ -1,4 +1,5 @@
 ---
+import { ruta } from '../lib/rutas';
 import { formatoCLP } from '../lib/formato';
 
 interface Props {
@@ -12,7 +13,7 @@ const { slug, precioCLP } = Astro.props;
     <span class="mono barra__precio">{formatoCLP(precioCLP)}</span>
     <span class="barra__nota">CLP · precio único</span>
   </p>
-  <a class="boton boton--primario" href={`/inscripcion/${slug}/`}>Inscribirme</a>
+  <a class="boton boton--primario" href={ruta(`/inscripcion/${slug}/`)}>Inscribirme</a>
 </div>
 
 <style>

@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import { SITIO } from '../config/sitio';
 import { mostrar } from '../lib/formato';
+import { ruta } from '../lib/rutas';
 
 const cursos = (await getCollection('cursos')).sort((a, b) => a.data.orden - b.data.orden);
 const anio = new Date().getFullYear();
@@ -11,26 +12,24 @@ const correoReal = SITIO.correo !== 'PENDIENTE';
 <footer class="pie" id="contacto">
   <div class="contenedor pie__grilla">
     <div class="pie__marca">
-      <picture>
-        <source srcset="/brand/hgs-logo-oscuro.svg" media="(prefers-color-scheme: dark)" />
-        <img src="/brand/hgs-logo.svg" alt="HGS — Hidrogeología y geociencias" width="196" height="45" loading="lazy" />
-      </picture>
+      <img class="logo-claro" src={ruta('/brand/hgs-logo.svg')} alt="HGS — Hidrogeología y geociencias" width="196" height="45" loading="lazy" />
+      <img class="logo-oscuro" src={ruta('/brand/hgs-logo-oscuro.svg')} alt="HGS — Hidrogeología y geociencias" width="196" height="45" loading="lazy" />
       <p>Cursos en vivo de hidrogeología y geociencias aplicadas, por Google Meet.</p>
     </div>
 
     <nav aria-labelledby="pie-cursos">
       <h2 id="pie-cursos" class="pie__titulo">Cursos</h2>
       <ul>
-        {cursos.map((c) => <li><a href={`/cursos/${c.id}/`}>{c.data.titulo}</a></li>)}
+        {cursos.map((c) => <li><a href={ruta(`/cursos/${c.id}/`)}>{c.data.titulo}</a></li>)}
       </ul>
     </nav>
 
     <nav aria-labelledby="pie-hgs">
       <h2 id="pie-hgs" class="pie__titulo">HGS</h2>
       <ul>
-        <li><a href="/convenios/">Convenios desde {SITIO.convenioMinimoAlumnos} alumnos</a></li>
-        <li><a href="/terminos/">Términos de inscripción</a></li>
-        <li><a href="/privacidad/">Privacidad</a></li>
+        <li><a href={ruta('/convenios/')}>Convenios desde {SITIO.convenioMinimoAlumnos} alumnos</a></li>
+        <li><a href={ruta('/terminos/')}>Términos de inscripción</a></li>
+        <li><a href={ruta('/privacidad/')}>Privacidad</a></li>
       </ul>
     </nav>
 

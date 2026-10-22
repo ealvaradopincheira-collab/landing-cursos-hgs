@@ -4,13 +4,20 @@
 
 interface Particula { x: number; y: number; edad: number }
 
+export interface ControlParticulas {
+  reproducir(): void;
+  pausar(): void;
+  readonly reproduciendo: boolean;
+}
+
 const PASO = 1;            // px por cuadro a velocidad regional
 const LARGO_TRAZO = 7;     // largo del trazo en px a velocidad regional
 
-export function iniciarParticulas(lienzo: HTMLCanvasElement) {
+/** Con `reproducirAlInicio` = false queda un cuadro estático con el campo ya desarrollado. */
+export function iniciarParticulas(lienzo: HTMLCanvasElement, reproducirAlInicio: boolean): ControlParticulas | undefined {
   const ctx = lienzo.getContext('2d');
   if (!ctx) return;
-  const reducido = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let reproduciendo = reproducirAlInicio;
   let ancho = 0, alto = 0, dpr = 1;
   let pozo = { x: 0, y: 0 };
   let U = PASO, Q = 0;
@@ -103,13 +110,7 @@ export function iniciarParticulas(lienzo: HTMLCanvasElement) {
   };
 
   const arrancar = () => {
-    if (reducido) {
-      // Movimiento reducido: un solo cuadro estático con el campo ya desarrollado
-      for (let i = 0; i < 400; i++) avanzar();
-      dibujar();
-      return;
-    }
-    if (animando || !visible || document.hidden) return;
+    if (!reproduciendo || animando || !visible || document.hidden) return;
     animando = true;
     raf = requestAnimationFrame(cuadro);
   };
@@ -122,10 +123,19 @@ export function iniciarParticulas(lienzo: HTMLCanvasElement) {
   leerColores();
   dimensionar();
   for (let i = 0; i < 240; i++) avanzar(); // arranca con el campo desarrollado
+  dibujar();
   arrancar();
 
-  new ResizeObserver(() => { dimensionar(); for (let i = 0; i < 240; i++) avanzar(); if (reducido) dibujar(); }).observe(lienzo);
+  new ResizeObserver(() => { dimensionar(); for (let i = 0; i < 240; i++) avanzar(); if (!animando) dibujar(); }).observe(lienzo);
   new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible) arrancar(); else detener(); }).observe(lienzo);
   document.addEventListener('visibilitychange', () => (document.hidden ? detener() : arrancar()));
-  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { leerColores(); if (reducido) dibujar(); });
+  // Cambio de tema desde el botón de la cabecera (data-theme en <html>)
+  new MutationObserver(() => { leerColores(); if (!animando) dibujar(); })
+    .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+  return {
+    reproducir() { reproduciendo = true; arrancar(); },
+    pausar() { reproduciendo = false; detener(); },
+    get reproduciendo() { return reproduciendo; },
+  };
 }

@@ -4,6 +4,9 @@ import { defineConfig, fontProviders } from 'astro/config';
 // `site` queda sin definir hasta resolver el dominio (D-08 en specs/prd.md);
 // sin él, las URL canónicas y Open Graph se emiten relativas.
 export default defineConfig({
+  // Prefijo de rutas: '/' en Netlify; '/landing-cursos-hgs' en la vista previa de GitHub Pages
+  // (HGS_BASE en .github/workflows/vista-previa.yml). Los enlaces internos usan `ruta()`.
+  base: process.env.HGS_BASE || '/',
   output: 'static',
   trailingSlash: 'always',
   build: {
